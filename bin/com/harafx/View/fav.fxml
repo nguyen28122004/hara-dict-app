@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="531.0" prefWidth="1090.0" stylesheets="style/fav.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <HBox prefHeight="529.0" prefWidth="1090.0">
+         <children>
+            <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="529.0" prefWidth="321.0">
+               <children>
+                  <ListView layoutX="25.0" layoutY="58.0" prefHeight="450.0" prefWidth="323.0" style="-fx-background-color: transparent;" />
+                  <TextField layoutX="25.0" layoutY="18.0" prefHeight="32.0" prefWidth="323.0" promptText="Type here for searching" style="-fx-background-color: 0; -fx-border-color: #16325c; -fx-border-radius: 5; -fx-text-fill: #16325c;" />
+               </children>
+            </AnchorPane>
+            <AnchorPane prefHeight="464.0" prefWidth="44.0">
+               <children>
+                  <VBox alignment="TOP_CENTER" layoutX="4.0" layoutY="54.0" prefHeight="450.0" prefWidth="39.0" styleClass="tool-right-side-bar">
+                     <children>
+                        <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="0.0" prefWidth="39.0" />
+                        <StackPane fx:id="addWordButton" layoutX="10.0" layoutY="296.0" prefHeight="39.0" prefWidth="39.0" styleClass="tool-button">
+                           <children>
+                              <ImageView fitHeight="31.0" fitWidth="31.0">
+                                 <image>
+                                    <Image url="@../../../resource/dark%20blue%20icon/icons8-add-50.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </StackPane>
+                        <StackPane fx:id="deleteWordButton" layoutX="10.0" layoutY="71.0" prefHeight="39.0" prefWidth="39.0" styleClass="tool-button">
+                           <children>
+                              <ImageView fitHeight="36.0" fitWidth="36.0">
+                                 <image>
+                                    <Image url="@../../../resource/dark%20blue%20icon/icons8-trash-can-50.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </StackPane>
+                        <StackPane fx:id="editWordButton" layoutX="10.0" layoutY="394.0" prefHeight="39.0" prefWidth="39.0" styleClass="tool-button">
+                           <children>
+                              <ImageView fitHeight="35.0" fitWidth="35.0">
+                                 <image>
+                                    <Image url="@../../../resource/dark%20blue%20icon/icons8-tools-50.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </StackPane>
+                        <StackPane fx:id="addFavButton" layoutX="10.0" layoutY="443.0" prefHeight="39.0" prefWidth="39.0" styleClass="tool-button">
+                           <children>
+                              <ImageView fitHeight="32.0" fitWidth="32.0">
+                                 <image>
+                                    <Image url="@../../../resource/dark%20blue%20icon/heart-filled.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </StackPane>
+                     </children>
+                  </VBox>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="rightSearchPane" layoutX="86.0" layoutY="10.0" prefHeight="529.0" prefWidth="698.0" />
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>

@@ -1,0 +1,34 @@
+.text-area {
+
+    -fx-text-fill: #16325c;
+    -fx-font-size: 18;
+    -fx-background-insets: 0;
+    -fx-background-color: transparent;
+    -fx-border-color: #6c8ec1;
+    -fx-border-radius: 7;
+}
+
+.text-area .content {
+    -fx-background-color: transparent;
+}
+
+.text-area:focused .content {
+    -fx-background-color: transparent;
+}
+
+.text-area:focused {
+    -fx-highlight-fill: #7ecfff;
+}
+
+.text-area .content {
+    -fx-padding: 10px;
+    -fx-text-fill: gray;
+    -fx-highlight-fill: #7ecfff;
+}
+
+.combo-box{
+    -fx-border-color: #16325c;
+    -fx-border-radius: 10;
+    -fx-background-color: #e4eeff;
+    -fx-text-fill: #16325c;
+}

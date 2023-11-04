@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="538.0" prefWidth="1090.0" stylesheets="style/home.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.harafx.Controllers.homeController">
+   <children>
+      <TextField id="name-field" focusTraversable="false" layoutX="156.0" layoutY="5.0" prefHeight="61.0" prefWidth="493.0" promptText="YOUR NAME">
+         <font>
+            <Font name="Segoe UI Bold" size="32.0" />
+         </font>
+      </TextField>
+      <Label graphicTextGap="6.0" layoutX="29.0" layoutY="12.0" prefHeight="47.0" prefWidth="144.0" text="Welcome" textFill="#16325c">
+         <font>
+            <Font name="Segoe UI Bold" size="32.0" />
+         </font>
+      </Label>
+      <GridPane layoutX="328.0" layoutY="80.0" prefHeight="394.0" prefWidth="710.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="327.0" minWidth="10.0" prefWidth="325.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="232.0" minWidth="0.0" prefWidth="30.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="327.0" minWidth="10.0" prefWidth="325.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints maxHeight="185.0" minHeight="10.0" prefHeight="185.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="80.0" minHeight="1.0" prefHeight="38.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="185.0" minHeight="10.0" prefHeight="185.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <AnchorPane styleClass="function-anchor-pane">
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" height="180.0" layoutX="-1.0" stroke="TRANSPARENT" strokeType="INSIDE" styleClass="function-box" width="327.0">
+                     <fill>
+                        <LinearGradient endX="1.0" endY="1.0" startX="0.2028985507246377" startY="0.32367149758454106">
+                           <stops>
+                              <Stop color="#16325c" />
+                              <Stop color="#16325c" offset="0.007380073800738007" />
+                              <Stop color="#16325ce3" offset="0.34317343173431725" />
+                              <Stop color="#16325ca1" offset="0.6603327162839733" />
+                              <Stop color="#16325c23" offset="1.0" />
+                           </stops>
+                        </LinearGradient>
+                     </fill>
+                     <effect>
+                        <DropShadow blurType="GAUSSIAN" color="#00000079" offsetX="2.0" />
+                     </effect>
+                  </Rectangle>
+                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="141.0" layoutY="83.0" prefHeight="39.0" prefWidth="164.0" text="Looking for a baby word" textFill="WHITE" wrapText="true">
+                     <font>
+                        <Font name="Segoe UI Italic" size="14.0" />
+                     </font>
+                  </Label>
+                  <ImageView layoutX="7.0" layoutY="16.0">
+                     <image>
+                        <Image url="@../../../resource/icon100/icons8-search-144%20(1).png" />
+                     </image>
+                  </ImageView>
+                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="141.0" layoutY="55.0" prefHeight="39.0" prefWidth="164.0" text="SEARCH" textFill="WHITE" wrapText="true">
+                     <font>
+                        <Font name="Segoe UI Bold Italic" size="38.0" />
+                     </font>
+                  </Label>
+               </children>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </AnchorPane>
+            <AnchorPane styleClass="function-anchor-pane" GridPane.columnIndex="2">
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" height="180.0" layoutX="-1.0" stroke="TRANSPARENT" strokeType="INSIDE" styleClass="function-box" width="327.0">
+                     <effect>
+                        <DropShadow blurType="GAUSSIAN" color="#00000079" offsetX="2.0" />
+                     </effect>
+                     <fill>
+                        <LinearGradient endX="1.0" endY="1.0" startX="0.2028985507246377" startY="0.32367149758454106">
+                           <stops>
+                              <Stop color="#16325c" />
+                              <Stop color="#16325c" offset="0.007380073800738007" />
+                              <Stop color="#16325ce3" offset="0.34317343173431725" />
+                              <Stop color="#16325ca1" offset="0.6603327162839733" />
+                              <Stop color="#16325c23" offset="1.0" />
+                           </stops>
+                        </LinearGradient>
+                     </fill>
+                  </Rectangle>
+                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="132.0" layoutY="79.0" prefHeight="39.0" prefWidth="164.0" text="A translation tool using Google Translate API" textFill="WHITE" wrapText="true">
+                     <font>
+                        <Font name="Segoe UI Italic" size="14.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="122.0" fitWidth="121.0" layoutX="8.0" layoutY="30.0">
+                     <image>
+                        <Image url="@../../../resource/icon100/icons8-google-translate-480.png" />
+                     </image>
+                  </ImageView>
+                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="87.0" layoutY="26.0" prefHeight="47.0" prefWidth="227.0" text="TRANSLATE" textFill="WHITE" wrapText="true">
+                     <font>
+                        <Font name="Segoe UI Bold Italic" size="38.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="132.0" layoutY="107.0" prefHeight="39.0" prefWidth="164.0" text="Really powerful!!!" textFill="WHITE" wrapText="true">
+                     <font>
+                        <Font name="Segoe UI Italic" size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </AnchorPane>
+            <AnchorPane styleClass="function-anchor-pane" GridPane.rowIndex="2">
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" height="180.0" layoutX="-1.0" stroke="TRANSPARENT" strokeType="INSIDE" styleClass="function-box" width="327.0">
+                     <effect>
+                        <DropShadow blurType="GAUSSIAN" color="#00000079" offsetX="2.0" />
+                     </effect>
+                     <fill>
+                        <LinearGradient endX="1.0" endY="1.0" startX="0.2028985507246377" startY="0.32367149758454106">
+                           <stops>
+                              <Stop color="#16325c" />
+                              <Stop color="#16325c" offset="0.007380073800738007" />
+                              <Stop color="#16325ce3" offset="0.34317343173431725" />
+                              <Stop color="#16325ca1" offset="0.6603327162839733" />
+                              <Stop color="#16325c23" offset="1.0" />
+                           </stops>
+                        </LinearGradient>
+                     </fill>
+                  </Rectangle>
+                  <ImageView fitHeight="130.0" fitWidth="175.0" layoutY="15.0">
+                     <image>
+                        <Image url="@../../../resource/icon100/card%20changing1.gif" />
+                     </image>
+                  </ImageView>
+                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="141.0" layoutY="83.0" prefHeight="39.0" prefWidth="164.0" text="This is a real gamble!!" textFill="WHITE" wrapText="true">
+                     <font>
+                        <Font name="Segoe UI Italic" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="141.0" layoutY="54.0" prefHeight="39.0" prefWidth="164.0" text="CARDS" textFill="WHITE" wrapText="true">
+                     <font>
+                        <Font name="Segoe UI Bold Italic" size="38.0" />
+                     </font>
+                  </Label>
+               </children>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </AnchorPane>
+            <AnchorPane styleClass="function-anchor-pane" GridPane.columnIndex="2" GridPane.rowIndex="2">
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" height="180.0" layoutX="-1.0" stroke="TRANSPARENT" strokeType="INSIDE" styleClass="function-box" width="327.0">
+                     <effect>
+                        <DropShadow blurType="GAUSSIAN" color="#00000079" offsetX="2.0" />
+                     </effect>
+                     <fill>
+                        <LinearGradient endX="1.0" endY="1.0" startX="0.2028985507246377" startY="0.32367149758454106">
+                           <stops>
+                              <Stop color="#16325c" />
+                              <Stop color="#16325c" offset="0.007380073800738007" />
+                              <Stop color="#16325ce3" offset="0.34317343173431725" />
+                              <Stop color="#16325ca1" offset="0.6603327162839733" />
+                              <Stop color="#16325c23" offset="1.0" />
+                           </stops>
+                        </LinearGradient>
+                     </fill>
+                  </Rectangle>
+                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="141.0" layoutY="83.0" prefHeight="39.0" prefWidth="164.0" text="Don't leave any blanks!" textFill="WHITE" wrapText="true">
+                     <font>
+                        <Font name="Segoe UI Italic" size="14.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="122.0" fitWidth="121.0" layoutX="20.0" layoutY="25.0">
+                     <image>
+                        <Image url="@../../../resource/icon100/scroll%20(1).png" />
+                     </image>
+                  </ImageView>
+                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="141.0" layoutY="55.0" prefHeight="39.0" prefWidth="164.0" text="FILL IT!!" textFill="WHITE" wrapText="true">
+                     <font>
+                        <Font name="Segoe UI Bold Italic" size="38.0" />
+                     </font>
+                  </Label>
+               </children>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </AnchorPane>
+         </children>
+      </GridPane>
+      <VBox id="random-word" layoutX="29.0" layoutY="80.0" prefHeight="394.0" prefWidth="266.0" />
+      <ImageView fitHeight="130.0" fitWidth="129.0" layoutX="876.0" layoutY="-50.0" opacity="0.14">
+         <image>
+            <Image url="@../../../resource/robot-with-book.png" />
+         </image>
+         <effect>
+            <InnerShadow blurType="GAUSSIAN" color="#16325c" />
+         </effect>
+      </ImageView>
+   </children>
+</AnchorPane>

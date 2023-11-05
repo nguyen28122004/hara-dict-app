@@ -1,5 +1,7 @@
 package com.harafx.Models;
 
+import org.json.simple.JSONObject;
+
 public class Meaning {
     private String en = new String();
     private String vi = new String();
@@ -9,6 +11,12 @@ public class Meaning {
         en = "";
         vi = "";
         example = "";
+    }
+
+    public Meaning(Meaning meaning) {
+        this.en = meaning.en;
+        this.vi = meaning.vi;
+        this.example = meaning.example;
     }
 
     public Meaning(String en, String vi, String example) {
@@ -39,5 +47,20 @@ public class Meaning {
 
     public void setExample(String example) {
         this.example = example;
+    }
+
+    public void convertFromJson(JSONObject jo) {
+        vi = (String) jo.get("vi_def");
+        en = (String) jo.get("en_def");
+        example = (String) jo.get("example");
+    }
+
+    public void debug() {
+        System.out.println("---------------");
+        System.out.println("Meanings");
+        System.out.println(vi);
+        System.out.println(en);
+        System.out.println(example);
+        System.out.println("---------------");
     }
 }

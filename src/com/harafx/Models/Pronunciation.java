@@ -1,5 +1,7 @@
 package com.harafx.Models;
 
+import org.json.simple.JSONObject;
+
 public class Pronunciation {
     private String us = new String();
     private String uk = new String();
@@ -26,5 +28,18 @@ public class Pronunciation {
 
     public void setUk(String uk) {
         this.uk = uk;
+    }
+
+    public void convertFromJson(JSONObject jo) {
+        us = (String) jo.get("us");
+        uk = (String) jo.get("uk");
+    }
+
+    public void debug() {
+        System.out.println("--------");
+        System.out.println("PRONUNCIATION");
+        System.out.println("US: " + us);
+        System.out.println("UK: " + uk);
+        System.out.println("--------");
     }
 }

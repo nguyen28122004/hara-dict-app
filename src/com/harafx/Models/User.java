@@ -1,5 +1,7 @@
 package com.harafx.Models;
 
+import com.harafx.Models.Json;
+
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -63,8 +65,7 @@ public class User {
 
     public static User loadUser(String path)
             throws FileNotFoundException, IOException, ParseException {
-        Object obj = new JSONParser().parse(new FileReader(path));
-        JSONObject user = (JSONObject) obj;
+        JSONObject user = Json.loadObjectFromFile(path);
         return new User((String) user.get("name"), (String) user.get("email"));
     }
 }

@@ -1,5 +1,7 @@
 package com.harafx.Models;
 
+import org.json.simple.JSONObject;
+
 public class Audio {
     private String us = new String();
     private String uk = new String();
@@ -28,6 +30,11 @@ public class Audio {
 
     public void setUk(String uk) {
         this.uk = uk;
+    }
+
+    public void convertFromJson(JSONObject jo) {
+        us = (String) jo.get("us");
+        uk = (String) jo.get("uk");
     }
 
 }

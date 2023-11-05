@@ -30,9 +30,9 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="538.0" prefWidth="1090.0" stylesheets="style/home.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.harafx.Controllers.homeController">
+<AnchorPane fx:id="contentPane" prefHeight="538.0" prefWidth="1090.0" stylesheets="style/home.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.harafx.Controllers.homeController">
    <children>
-      <TextField id="name-field" focusTraversable="false" layoutX="156.0" layoutY="5.0" prefHeight="61.0" prefWidth="493.0" promptText="YOUR NAME">
+      <TextField id="name-field" fx:id="nameField" focusTraversable="false" layoutX="156.0" layoutY="5.0" onKeyReleased="#saveName" prefHeight="61.0" prefWidth="493.0" promptText="YOUR NAME">
          <font>
             <Font name="Segoe UI Bold" size="32.0" />
          </font>
@@ -54,7 +54,7 @@
           <RowConstraints maxHeight="185.0" minHeight="10.0" prefHeight="185.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <AnchorPane styleClass="function-anchor-pane">
+            <AnchorPane fx:id="GridBox1" styleClass="function-anchor-pane">
                <children>
                   <Rectangle arcHeight="5.0" arcWidth="5.0" height="180.0" layoutX="-1.0" stroke="TRANSPARENT" strokeType="INSIDE" styleClass="function-box" width="327.0">
                      <fill>
@@ -92,7 +92,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </AnchorPane>
-            <AnchorPane styleClass="function-anchor-pane" GridPane.columnIndex="2">
+            <AnchorPane fx:id="GridBox2" styleClass="function-anchor-pane" GridPane.columnIndex="2">
                <children>
                   <Rectangle arcHeight="5.0" arcWidth="5.0" height="180.0" layoutX="-1.0" stroke="TRANSPARENT" strokeType="INSIDE" styleClass="function-box" width="327.0">
                      <effect>
@@ -135,7 +135,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </AnchorPane>
-            <AnchorPane styleClass="function-anchor-pane" GridPane.rowIndex="2">
+            <AnchorPane fx:id="GridBox3" styleClass="function-anchor-pane" GridPane.rowIndex="2">
                <children>
                   <Rectangle arcHeight="5.0" arcWidth="5.0" height="180.0" layoutX="-1.0" stroke="TRANSPARENT" strokeType="INSIDE" styleClass="function-box" width="327.0">
                      <effect>
@@ -173,7 +173,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </AnchorPane>
-            <AnchorPane styleClass="function-anchor-pane" GridPane.columnIndex="2" GridPane.rowIndex="2">
+            <AnchorPane fx:id="GridBox4" styleClass="function-anchor-pane" GridPane.columnIndex="2" GridPane.rowIndex="2">
                <children>
                   <Rectangle arcHeight="5.0" arcWidth="5.0" height="180.0" layoutX="-1.0" stroke="TRANSPARENT" strokeType="INSIDE" styleClass="function-box" width="327.0">
                      <effect>

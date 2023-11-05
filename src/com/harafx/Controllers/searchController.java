@@ -3,6 +3,11 @@ package com.harafx.Controllers;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import org.json.simple.parser.ParseException;
+
+import com.harafx.Models.Dictionary;
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -12,6 +17,9 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 
 public class searchController implements Initializable {
+
+    Dictionary dict = new Dictionary();
+
     @FXML
     AnchorPane rightSearchPane = new AnchorPane();
 
@@ -70,5 +78,11 @@ public class searchController implements Initializable {
             e.printStackTrace();
         }
         initButtonControl();
+
+        try {
+            dict.loadJson("src/resource/dict.json");
+        } catch (IOException | ParseException e) {
+            e.printStackTrace();
+        }
     }
 }

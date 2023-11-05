@@ -15,7 +15,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
-public class mainController implements Initializable {
+public class mainController extends generalController implements Initializable {
     @FXML
     AnchorPane titleBar = new AnchorPane();
     @FXML
@@ -41,13 +41,6 @@ public class mainController implements Initializable {
     @FXML
     StackPane settingButton = new StackPane();
 
-    @FXML
-    AnchorPane contentPane = new AnchorPane();
-
-    void setNewScene(Node node) {
-        contentPane.getChildren().setAll(node);
-    }
-
     void setTitleBarDrag(boolean bool) {
         if (!bool) {
             return;
@@ -68,66 +61,6 @@ public class mainController implements Initializable {
     void minimize() {
         Stage curStage = (Stage) quitButton.getScene().getWindow();
         curStage.setIconified(true);
-    }
-
-    void showHomePane() {
-        Node homeNode;
-        try {
-            homeNode = (Node) FXMLLoader.load(getClass().getResource("../view/home.fxml"));
-            setNewScene(homeNode);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    void showSearchPane() {
-        Node searchNode;
-        try {
-            searchNode = (Node) FXMLLoader.load(getClass().getResource("../view/search.fxml"));
-            setNewScene(searchNode);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    void showGgTranslatePane() {
-        Node searchNode;
-        try {
-            searchNode = (Node) FXMLLoader.load(getClass().getResource("../view/ggtranslate.fxml"));
-            setNewScene(searchNode);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    void showTimingPane() {
-        Node searchNode;
-        try {
-            searchNode = (Node) FXMLLoader.load(getClass().getResource("../view/timing.fxml"));
-            setNewScene(searchNode);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    void showFavPane() {
-        Node searchNode;
-        try {
-            searchNode = (Node) FXMLLoader.load(getClass().getResource("../view/fav.fxml"));
-            setNewScene(searchNode);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    void showGamePane() {
-        Node searchNode;
-        try {
-            searchNode = (Node) FXMLLoader.load(getClass().getResource("../view/game-menu.fxml"));
-            setNewScene(searchNode);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 
     void initButtonControl() throws IOException {

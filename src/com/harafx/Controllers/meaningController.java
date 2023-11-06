@@ -83,7 +83,9 @@ public class meaningController implements Initializable {
         Word word = TransferedData.dict.getWords().get(TransferedData.wordIndex);
 
         for (Defination def : word.getDefs()) {
-            wordTypeEl.text(def.getType());
+
+            wordTypeEl.text("(" + def.getType() + ")");
+
             for (Meaning meaning : def.getMeanings()) {
 
                 viEl = meaningEl.select(".vi").get(0);

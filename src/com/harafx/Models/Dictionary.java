@@ -4,7 +4,9 @@ import com.harafx.Models.Json;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 
 import org.json.simple.JSONArray;
@@ -51,6 +53,17 @@ public class Dictionary {
             // System.out.println("==========================================");
             // word.debug();
         }
+    }
+
+    public void saveJson(String path) throws IOException {
+        JSONArray dictJA = new JSONArray();
+        for (Word word : words) {
+            dictJA.add(word.convertToJson());
+        }
+        PrintWriter pw = new PrintWriter(path);
+        pw.write(dictJA.toJSONString());
+        pw.flush();
+        pw.close();
     }
 
     public int searchWord(String target) {

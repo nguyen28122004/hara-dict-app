@@ -44,6 +44,19 @@ public class Defination {
         }
     }
 
+    public JSONObject convertToJson() {
+        JSONObject jo = new JSONObject();
+        JSONArray meaningsJA = new JSONArray();
+
+        jo.put("type", type);
+
+        for (Meaning meaning : meanings) {
+            meaningsJA.add(meaning.convertToJSon());
+        }
+        jo.put("meanings", meaningsJA);
+        return jo;
+    }
+
     public void debug() {
         System.out.println("Type: " + type);
         for (Meaning meaning : meanings) {

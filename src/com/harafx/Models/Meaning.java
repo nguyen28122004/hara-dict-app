@@ -55,6 +55,14 @@ public class Meaning {
         example = (String) jo.get("example");
     }
 
+    public JSONObject convertToJSon() {
+        JSONObject jo = new JSONObject();
+        jo.put("vi_def", vi);
+        jo.put("en_def", en);
+        jo.put("example", example);
+        return jo;
+    }
+
     public void debug() {
         System.out.println("---------------");
         System.out.println("Meanings");

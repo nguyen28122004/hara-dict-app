@@ -37,4 +37,11 @@ public class Audio {
         uk = (String) jo.get("uk");
     }
 
+    public JSONObject convertToJson() {
+        JSONObject jo = new JSONObject();
+        jo.put("us", us);
+        jo.put("uk", uk);
+        return jo;
+    }
+
 }

@@ -7,10 +7,15 @@
 <style>
     *{
         font-family: 'Segoe UI';
+        user-select: none;
+        -webkit-user-select: none;
     }
 
     body{
         background-color: rgba(0, 0, 0, 0);
+    }
+    body::-webkit-scrollbar{
+        display: none;
     }
 
     .defination{
@@ -51,6 +56,14 @@ hr.solid{
     opacity: 0.17;
 }
 
+.meanings
+{
+    /* display: flex; */
+    flex-direction: column;
+    row-gap: 7px;
+    justify-items: start;
+}
+
 </style>
 <body>
     <div class="defination-wrap">
@@ -63,6 +76,8 @@ hr.solid{
                     <li>
                         <div class="example">Example</div>
                     </li>
+                    <hr class="solid" style="border: 1px solid transparent;">
+                    <hr class="solid" style="border: 1px solid transparent;">
                 </div>
             </div>
         </div>

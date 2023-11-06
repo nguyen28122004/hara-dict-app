@@ -21,7 +21,7 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="529.0" prefWidth="668.0" stylesheets="style/search.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="529.0" prefWidth="668.0" stylesheets="style/search.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.harafx.Controllers.addController">
    <children>
       <TextField id="new-word-field" layoutY="-7.0" prefHeight="80.0" prefWidth="668.0" promptText="New word" style="-fx-background-color: none; -fx-background-insets: 0;">
          <font>

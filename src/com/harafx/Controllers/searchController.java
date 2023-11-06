@@ -17,6 +17,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
@@ -29,6 +30,9 @@ public class searchController implements Initializable {
     private final String DICT_PATH = "src/resource/dict.json";
 
     private Dictionary dict = new Dictionary();
+
+    @FXML
+    TextField searchField = new TextField();
 
     @FXML
     ListView<String> targetListView = new ListView<>();

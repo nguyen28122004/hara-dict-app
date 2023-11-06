@@ -35,6 +35,13 @@ public class Pronunciation {
         uk = (String) jo.get("uk");
     }
 
+    public JSONObject convertToJson() {
+        JSONObject jo = new JSONObject();
+        jo.put("us", us);
+        jo.put("uk", uk);
+        return jo;
+    }
+
     public void debug() {
         System.out.println("--------");
         System.out.println("PRONUNCIATION");

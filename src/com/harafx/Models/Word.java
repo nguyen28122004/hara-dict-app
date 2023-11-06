@@ -98,6 +98,23 @@ public class Word {
         en_en_URL = (String) jo.get("en_en_url");
     }
 
+    public JSONObject convertToJson() {
+        JSONObject jo = new JSONObject();
+        JSONArray defsJA = new JSONArray();
+
+        jo.put("target", target);
+        jo.put("ipa", ipa.convertToJson());
+
+        for (Defination defination : defs) {
+            defsJA.add(defination.convertToJson());
+        }
+        jo.put("definations", defsJA);
+        jo.put("audio", audio.convertToJson());
+        jo.put("en_vi_url", en_vi_URL);
+        jo.put("en_en_url", en_en_URL);
+        return jo;
+    }
+
     public void debug() {
         System.out.println("Target: " + target);
         ipa.debug();

@@ -24,15 +24,25 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.effect.BlendMode;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 
 public class meaningController implements Initializable {
 
+    Word word = new Word();
     String htmlString = new String();
+
+    @FXML
+    Pane usAudioButton = new Pane();
+    @FXML
+    Pane ukAudioButton = new Pane();
 
     @FXML
     Label targetLabel = new Label();
@@ -75,25 +85,31 @@ public class meaningController implements Initializable {
         for (Defination def : word.getDefs()) {
             wordTypeEl.text(def.getType());
             for (Meaning meaning : def.getMeanings()) {
+
                 viEl = meaningEl.select(".vi").get(0);
                 enEl = meaningEl.select(".en").get(0);
                 exampleEl = meaningEl.select(".example").get(0);
+
                 viEl.text(meaning.getVi());
                 enEl.text(meaning.getEn());
                 exampleEl.text(meaning.getExample());
                 meaningEl.append(meaningEl.select(".meaning").get(0).outerHtml());
             }
+
             meaningEl.select(".meaning").get(0).remove();
-            // meaningEl.firstElementChild().remove();
             defsEl.append(defEl.outerHtml());
             defsEl.append("<hr class=\"solid\">");
             meaningEl.html(meaningEl.select(".meaning").get(0).outerHtml());
-            System.out.println(meaningEl.html());
-            System.out.println("=================");
-            // break;
         }
         defEl.remove();
         htmlString = doc.toString();
+    }
+
+    void playAudio(String url) {
+        Media sound = new Media(url);
+        MediaPlayer mediaPlayer = new MediaPlayer(sound);
+        mediaPlayer.play();
+        System.out.println(url);
     }
 
     @Override
@@ -102,6 +118,14 @@ public class meaningController implements Initializable {
         targetLabel.setText(word.getTarget());
         usPronunciation.setText("/" + word.getIpa().getUs() + "/");
         ukPronunciation.setText("/" + word.getIpa().getUk() + "/");
+
+        usAudioButton.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
+            playAudio(word.getAudio().getUs());
+        });
+
+        ukAudioButton.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
+            playAudio(word.getAudio().getUk());
+        });
 
         defPane.setContextMenuEnabled(false);
         defPane.setBlendMode(BlendMode.DARKEN);

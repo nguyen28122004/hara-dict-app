@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.web.*?>
 <?import java.lang.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
@@ -22,10 +23,9 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane fx:id="rightSearchPane" prefHeight="529.0" prefWidth="698.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" stylesheets="style/search.css">
+<AnchorPane fx:id="rightSearchPane" prefHeight="529.0" prefWidth="698.0" stylesheets="style/search.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.harafx.Controllers.meaningController">
    <children>
-      <Label layoutX="21.0" layoutY="8.0" prefHeight="52.0" prefWidth="323.0" text="Target words" textFill="#16325c">
+      <Label fx:id="targetLabel" layoutX="21.0" layoutY="8.0" prefHeight="52.0" prefWidth="323.0" text="Target words" textFill="#16325c">
          <font>
             <Font name="Segoe UI Bold" size="43.0" />
          </font>
@@ -43,7 +43,7 @@
                </image>
             </ImageView>
             <AnchorPane layoutX="214.0" layoutY="10.0" prefHeight="25.0" prefWidth="5.0" />
-            <Label prefHeight="25.0" prefWidth="59.0" text="/us_ipa/" textFill="#16325c" />
+            <Label fx:id="usPronunciation" prefHeight="25.0" prefWidth="59.0" text="/us_ipa/" textFill="#16325c" />
             <AnchorPane prefHeight="25.0" prefWidth="47.0" />
             <Label prefHeight="25.0" prefWidth="24.0" text="UK" textFill="#16325c">
                <font>
@@ -56,53 +56,9 @@
                </image>
             </ImageView>
             <AnchorPane layoutX="118.0" layoutY="10.0" prefHeight="25.0" prefWidth="5.0" />
-            <Label prefHeight="25.0" prefWidth="59.0" text="/uk_ipa/" textFill="#16325c" />
+            <Label fx:id="ukPronunciation" prefHeight="25.0" prefWidth="59.0" text="/uk_ipa/" textFill="#16325c" />
          </children>
       </HBox>
-      <ScrollPane cacheShape="false" hbarPolicy="NEVER" layoutX="23.0" layoutY="105.0" maxHeight="400.0" maxWidth="639.0" minHeight="400.0" minWidth="639.0" prefHeight="400.0" prefViewportHeight="639.0" prefViewportWidth="400.0" prefWidth="639.0" snapToPixel="false" style="-fx-border-color: transparent;" vbarPolicy="NEVER">
-         <content>
-            <AnchorPane cacheShape="false" layoutX="23.0" layoutY="105.0" maxHeight="400.0" maxWidth="637.0" minHeight="400.0" minWidth="637.0" prefHeight="400.0" prefWidth="637.0" style="-fx-padding: 0; -fx-background-color: transparent;">
-               <children>
-                  <VBox cacheShape="false" prefHeight="97.0" prefWidth="637.0">
-                     <children>
-                        <VBox cacheShape="false" minHeight="-Infinity" pickOnBounds="false" prefHeight="146.0" prefWidth="611.0" scaleShape="false" VBox.vgrow="NEVER">
-                           <children>
-                              <AnchorPane cacheShape="false" prefHeight="6.0" prefWidth="611.0" />
-                              <Label cacheShape="false" style="-fx-padding: 0;" text="(noun)" textFill="#16325c">
-                                 <font>
-                                    <Font name="System Bold Italic" size="14.0" />
-                                 </font>
-                              </Label>
-                              <AnchorPane cacheShape="false" layoutX="10.0" layoutY="13.0" prefHeight="6.0" prefWidth="611.0" />
-                              <Label cacheShape="false" text="vietnam explanantion" textFill="#c70000">
-                                 <font>
-                                    <Font name="System Bold" size="18.0" />
-                                 </font>
-                              </Label>
-                              <Label cacheShape="false" layoutX="10.0" layoutY="45.0" text="eng explanatio" textFill="#16325c">
-                                 <font>
-                                    <Font name="System Bold" size="18.0" />
-                                 </font>
-                              </Label>
-                              <HBox alignment="CENTER_LEFT" cacheShape="false" prefHeight="65.0" prefWidth="611.0">
-                                 <children>
-                                    <Circle fill="#16325c" radius="4.0" stroke="TRANSPARENT" strokeType="INSIDE" />
-                                    <AnchorPane prefHeight="25.0" prefWidth="9.0" />
-                                    <Label text="this is example of this target word" textFill="#16325c" wrapText="true">
-                                       <font>
-                                          <Font name="System Italic" size="16.0" />
-                                       </font>
-                                    </Label>
-                                 </children>
-                              </HBox>
-                              <AnchorPane cacheShape="false" prefHeight="2.0" prefWidth="637.0" styleClass="separator" />
-                           </children>
-                        </VBox>
-                     </children>
-                  </VBox>
-               </children>
-            </AnchorPane>
-         </content>
-      </ScrollPane>
+      <WebView fx:id="defPane" layoutX="20.0" layoutY="111.0" prefHeight="404.0" prefWidth="649.0" />
    </children>
 </AnchorPane>

@@ -67,6 +67,9 @@ public class Dictionary {
     }
 
     public int searchWord(String target) {
+        if (target == "" || target == null) {
+            return -1;
+        }
         for (int i = 0; i < targetList.size(); i++) {
             if (target.equals(targetList.get(i))) {
                 return i;

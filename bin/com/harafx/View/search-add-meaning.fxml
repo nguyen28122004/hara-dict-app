@@ -21,7 +21,6 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane minHeight="207.0" prefHeight="207.0" prefWidth="569.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.harafx.Controllers.addMeaningController">
    <children>
       <AnchorPane layoutX="-6.0" layoutY="-1.0" opacity="0.2" prefHeight="1.0" prefWidth="544.0" style="-fx-background-color: #16325c;" />
@@ -36,7 +35,7 @@
                               <Font name="System Bold Italic" size="18.0" />
                            </font>
                         </Label>
-                        <ComboBox fx:id="wordType" prefHeight="42.0" prefWidth="199.0" promptText="Choose word type" style="-fx-background-color: none;" />
+                        <ComboBox fx:id="wordTypeCBox" prefHeight="42.0" prefWidth="199.0" promptText="Choose word type" style="-fx-background-color: none;" />
                      </children>
                   </HBox>
                   <HBox alignment="CENTER_LEFT" layoutY="145.0" prefHeight="17.0" prefWidth="531.0">
@@ -98,15 +97,21 @@
                            </image>
                         </ImageView>
                      </children>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
                   </Pane>
-                  <Pane>
+                  <Pane fx:id="deleteMeaningButton">
                      <children>
-                        <ImageView fx:id="deleteMeaningButton" fitHeight="31.0" fitWidth="31.0">
+                        <ImageView fitHeight="31.0" fitWidth="31.0">
                            <image>
                               <Image url="@../../../resource/dark%20blue%20icon/icons8-trash-can-50.png" />
                            </image>
                         </ImageView>
                      </children>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
                   </Pane>
                </children>
             </VBox>

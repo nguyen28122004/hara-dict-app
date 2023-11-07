@@ -5,6 +5,8 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+import javax.xml.crypto.dsig.spec.XPathType.Filter;
+
 import org.json.simple.parser.ParseException;
 
 import com.harafx.Models.Dictionary;
@@ -12,6 +14,9 @@ import com.harafx.Models.TransferedData;
 
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -30,6 +35,7 @@ public class searchController implements Initializable {
     private final String DICT_PATH = "src/resource/dict.json";
 
     private Dictionary dict = new Dictionary();
+    FilteredList<String> filteredTargetList;
 
     @FXML
     TextField searchField = new TextField();
@@ -67,6 +73,7 @@ public class searchController implements Initializable {
     void initButtonControl() {
         addWordButton.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
             try {
+                targetListView.getSelectionModel().clearSelection();
                 showAddPane();
             } catch (IOException e) {
                 e.printStackTrace();
@@ -89,11 +96,23 @@ public class searchController implements Initializable {
 
     public void addListView(ArrayList<String> targetList) {
         targetListView.getItems().addAll(targetList);
+
+        filteredTargetList = new FilteredList<>(FXCollections.observableArrayList(targetList), p -> true);
+
     }
 
     public void switchRightPane(String path) throws IOException {
         Node node = (Node) FXMLLoader.load(getClass().getResource(path));
         rightPane.getChildren().setAll(node);
+    }
+
+    public void search() {
+        targetListView.getSelectionModel().selectFirst();
+        String target = searchField.getText();
+        System.out.println(target);
+
+        filteredTargetList.setPredicate(target.isEmpty() ? p -> true : p -> p.contains(target));
+        targetListView.getItems().setAll(filteredTargetList);
     }
 
     @Override
@@ -110,7 +129,6 @@ public class searchController implements Initializable {
         addListView(dict.getTargetList());
 
         targetListView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
-
             @Override
             public void changed(ObservableValue<? extends String> arg0, String arg1, String arg2) {
                 int index = dict.searchWord(arg2);
@@ -119,7 +137,6 @@ public class searchController implements Initializable {
                     try {
                         switchRightPane(MEANING_PATH);
                     } catch (IOException e) {
-                        // TODO Auto-generated catch block
                         e.printStackTrace();
                     }
                 }

@@ -31,9 +31,13 @@
     -fx-border-color: #16325c;
     -fx-background-color: #b7bec8;
     -fx-border-radius: 5;
+}.list-view .list-cell{
+    -fx-font-size: 15;
 }
-
-.list-cell:selected {
+.list-view .list-cell:selected {
+    -fx-font-weight: bold;
+    -fx-text-fill: #fff;
+    -fx-font-size: 18;
     -fx-background-color: #16325c;
 }
 

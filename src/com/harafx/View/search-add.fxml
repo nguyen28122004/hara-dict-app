@@ -23,7 +23,7 @@
 
 <AnchorPane prefHeight="529.0" prefWidth="668.0" stylesheets="style/search.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.harafx.Controllers.addController">
    <children>
-      <TextField id="new-word-field" layoutY="-7.0" prefHeight="80.0" prefWidth="668.0" promptText="New word" style="-fx-background-color: none; -fx-background-insets: 0;">
+      <TextField id="new-word-field" fx:id="targetField" layoutY="-7.0" prefHeight="80.0" prefWidth="668.0" promptText="New word" style="-fx-background-color: none; -fx-background-insets: 0;">
          <font>
             <Font name="System Bold" size="43.0" />
          </font>
@@ -39,7 +39,7 @@
                               <Font name="System Bold Italic" size="18.0" />
                            </font>
                         </Label>
-                        <TextField prefHeight="39.0" prefWidth="490.0" promptText="______" style="-fx-background-color: transparent;">
+                        <TextField fx:id="usIpaField" prefHeight="39.0" prefWidth="490.0" promptText="______" style="-fx-background-color: transparent;">
                            <font>
                               <Font name="System Italic" size="18.0" />
                            </font>
@@ -53,7 +53,7 @@
                               <Font name="System Bold Italic" size="18.0" />
                            </font>
                         </Label>
-                        <TextField prefHeight="39.0" prefWidth="490.0" promptText="______" style="-fx-background-color: transparent;">
+                        <TextField fx:id="ukIpaFIeld" prefHeight="39.0" prefWidth="490.0" promptText="______" style="-fx-background-color: transparent;">
                            <font>
                               <Font name="System Italic" size="18.0" />
                            </font>
@@ -81,7 +81,7 @@
                                                       <Font name="System Bold Italic" size="18.0" />
                                                    </font>
                                                 </Label>
-                                                <ComboBox prefHeight="42.0" prefWidth="199.0" promptText="Choose word type" style="-fx-background-color: none;" />
+                                                <ComboBox fx:id="wordType" prefHeight="42.0" prefWidth="199.0" promptText="Choose word type" style="-fx-background-color: none;" />
                                              </children>
                                           </HBox>
                                           <HBox alignment="CENTER_LEFT" layoutY="145.0" prefHeight="17.0" prefWidth="531.0">
@@ -91,7 +91,7 @@
                                                       <Font name="System Bold Italic" size="18.0" />
                                                    </font>
                                                 </Label>
-                                                <TextField prefHeight="39.0" prefWidth="468.0" promptText="______" style="-fx-background-color: transparent;">
+                                                <TextField fx:id="exampleField" prefHeight="39.0" prefWidth="468.0" promptText="______" style="-fx-background-color: transparent;">
                                                    <font>
                                                       <Font name="System Italic" size="18.0" />
                                                    </font>
@@ -105,7 +105,7 @@
                                                       <Font name="System Bold Italic" size="18.0" />
                                                    </font>
                                                 </Label>
-                                                <TextField prefHeight="39.0" prefWidth="420.0" promptText="______" style="-fx-background-color: transparent;">
+                                                <TextField fx:id="viField" prefHeight="39.0" prefWidth="420.0" promptText="______" style="-fx-background-color: transparent;">
                                                    <font>
                                                       <Font name="System Italic" size="18.0" />
                                                    </font>
@@ -124,7 +124,7 @@
                                                       <Font name="System Bold Italic" size="18.0" />
                                                    </font>
                                                 </Label>
-                                                <TextField prefHeight="39.0" prefWidth="420.0" promptText="______" style="-fx-background-color: transparent;">
+                                                <TextField fx:id="enField" prefHeight="39.0" prefWidth="420.0" promptText="______" style="-fx-background-color: transparent;">
                                                    <font>
                                                       <Font name="System Italic" size="18.0" />
                                                    </font>
@@ -133,18 +133,26 @@
                                           </HBox>
                                        </children>
                                     </AnchorPane>
-                                    <VBox alignment="CENTER" style="-fx-spacing: 6;">
+                                    <VBox alignment="CENTER" prefHeight="191.0" prefWidth="32.0" style="-fx-spacing: 6;">
                                        <children>
-                                          <ImageView fitHeight="31.0" fitWidth="31.0">
-                                             <image>
-                                                <Image url="@../../../resource/dark%20blue%20icon/icons8-add-50.png" />
-                                             </image>
-                                          </ImageView>
-                                          <ImageView fitHeight="36.0" fitWidth="36.0">
-                                             <image>
-                                                <Image url="@../../../resource/dark%20blue%20icon/icons8-trash-can-50.png" />
-                                             </image>
-                                          </ImageView>
+                                          <Pane fx:id="addMeaningButton">
+                                             <children>
+                                                <ImageView fitHeight="31.0" fitWidth="31.0">
+                                                   <image>
+                                                      <Image url="@../../../resource/dark%20blue%20icon/icons8-add-50.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </children>
+                                          </Pane>
+                                          <Pane>
+                                             <children>
+                                                <ImageView fx:id="deleteMeaningButton" fitHeight="31.0" fitWidth="31.0">
+                                                   <image>
+                                                      <Image url="@../../../resource/dark%20blue%20icon/icons8-trash-can-50.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </children>
+                                          </Pane>
                                        </children>
                                     </VBox>
                                  </children>
@@ -157,12 +165,12 @@
             </AnchorPane>
          </content>
       </ScrollPane>
-      <Button id="cancel-button" layoutX="448.0" layoutY="479.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="93.0" text="Cancel" textFill="#16325c">
+      <Button id="cancel-button" fx:id="cancelButton" layoutX="448.0" layoutY="479.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="93.0" text="Cancel" textFill="#16325c">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <Button id="apply-button" layoutX="555.0" layoutY="479.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="93.0" text="Add" textFill="WHITE">
+      <Button id="apply-button" fx:id="okButton" layoutX="555.0" layoutY="479.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="93.0" text="Add" textFill="WHITE">
          <font>
             <Font size="18.0" />
          </font>

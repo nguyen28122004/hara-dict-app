@@ -17,6 +17,11 @@ public class Defination {
         this.meanings = meanings;
     }
 
+    public Defination(Defination def) {
+        this.type = def.type;
+        this.meanings = def.getMeanings();
+    }
+
     public String getType() {
         return type;
     }

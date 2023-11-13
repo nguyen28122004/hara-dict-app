@@ -47,7 +47,8 @@ public class Word {
     }
 
     public void setIpa(Pronunciation ipa) {
-        this.ipa = ipa;
+        this.ipa.setUk(ipa.getUk());
+        this.ipa.setUs(ipa.getUs());
     }
 
     public ArrayList<Defination> getDefs() {
@@ -63,7 +64,8 @@ public class Word {
     }
 
     public void setAudio(Audio audio) {
-        this.audio = audio;
+        this.audio.setUs(audio.getUs());
+        this.audio.setUk(audio.getUk());
     }
 
     public String getEn_vi_URL() {
@@ -80,6 +82,10 @@ public class Word {
 
     public void setEn_en_URL(String en_en_URL) {
         this.en_en_URL = en_en_URL;
+    }
+
+    public void addDef(Defination def) {
+        this.defs.add(def);
     }
 
     public void convertFromJson(JSONObject jo) {
@@ -113,6 +119,15 @@ public class Word {
         jo.put("en_vi_url", en_vi_URL);
         jo.put("en_en_url", en_en_URL);
         return jo;
+    }
+
+    public void clear() {
+        target = "";
+        ipa.clear();
+        defs.clear();
+        audio.clear();
+        en_vi_URL = "";
+        en_en_URL = "";
     }
 
     public void debug() {

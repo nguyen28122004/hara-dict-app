@@ -31,7 +31,8 @@
     -fx-border-color: #16325c;
     -fx-background-color: #b7bec8;
     -fx-border-radius: 5;
-}.list-view .list-cell{
+}
+.list-view .list-cell, .combo-box .list-cell{
     -fx-font-size: 15;
 }
 .list-view .list-cell:selected {

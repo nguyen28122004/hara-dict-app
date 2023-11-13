@@ -34,10 +34,9 @@ import javafx.scene.media.MediaPlayer;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 
-public class meaningController implements Initializable {
+public class meaningController extends wordFormController implements Initializable {
 
     Word word = new Word();
-    String htmlString = new String();
 
     @FXML
     Pane usAudioButton = new Pane();
@@ -50,62 +49,6 @@ public class meaningController implements Initializable {
     Label usPronunciation = new Label();
     @FXML
     Label ukPronunciation = new Label();
-    @FXML
-    WebView defPane = new WebView();
-
-    @FXML
-    WebEngine driver = new WebEngine();
-
-    public void loadHTML(String path) {
-        try (FileReader file = new FileReader(new File(path))) {
-
-            int i;
-            while ((i = file.read()) != -1) {
-                htmlString += (char) i;
-            }
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-    }
-
-    void setDefElements() {
-        Document doc = Jsoup.parse(htmlString);
-        org.jsoup.nodes.Element body = doc.body();
-        org.jsoup.nodes.Element defsEl = body.select(".defination-wrap").get(0);
-        org.jsoup.nodes.Element defEl = defsEl.select("#sample").get(0);
-        org.jsoup.nodes.Element wordTypeEl = defEl.select(".word-type").get(0);
-        org.jsoup.nodes.Element meaningEl = defEl.select(".meanings").get(0);
-        org.jsoup.nodes.Element viEl = meaningEl.select(".vi").get(0);
-        org.jsoup.nodes.Element enEl = meaningEl.select(".en").get(0);
-        org.jsoup.nodes.Element exampleEl = meaningEl.select(".example").get(0);
-
-        Word word = TransferedData.dict.getWords().get(TransferedData.wordIndex);
-
-        for (Defination def : word.getDefs()) {
-
-            wordTypeEl.text("(" + def.getType() + ")");
-
-            for (Meaning meaning : def.getMeanings()) {
-
-                viEl = meaningEl.select(".vi").get(0);
-                enEl = meaningEl.select(".en").get(0);
-                exampleEl = meaningEl.select(".example").get(0);
-
-                viEl.text(meaning.getVi());
-                enEl.text(meaning.getEn());
-                exampleEl.text(meaning.getExample());
-                meaningEl.append(meaningEl.select(".meaning").get(0).outerHtml());
-            }
-
-            meaningEl.select(".meaning").get(0).remove();
-            defsEl.append(defEl.outerHtml());
-            defsEl.append("<hr class=\"solid\">");
-            meaningEl.html(meaningEl.select(".meaning").get(0).outerHtml());
-        }
-        defEl.remove();
-        htmlString = doc.toString();
-    }
 
     void playAudio(String url) {
         Media sound = new Media(url);
@@ -129,12 +72,7 @@ public class meaningController implements Initializable {
             playAudio(word.getAudio().getUk());
         });
 
-        defPane.setContextMenuEnabled(false);
-        defPane.setBlendMode(BlendMode.DARKEN);
-        driver = defPane.getEngine();
-        loadHTML("src/com/harafx/view/meaning.html");
-        setDefElements();
-        driver.loadContent(htmlString);
+        loadHTML(MEANING_PATH);
     }
 
 }

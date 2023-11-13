@@ -43,6 +43,32 @@ public class Dictionary {
         this.words = words;
     }
 
+    public void addWord(Word word) {
+        this.words.add(word);
+        this.targetList.add(word.getTarget());
+    }
+
+    public void removeWord(int index) {
+        words.remove(index);
+        targetList.remove(index);
+    }
+
+    public int searchWord(String target) {
+        if (target == "" || target == null) {
+            return -1;
+        }
+        for (int i = 0; i < targetList.size(); i++) {
+            if (target.equals(targetList.get(i))) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    public int size() {
+        return words.size();
+    }
+
     public void loadJson(String path) throws FileNotFoundException, IOException, ParseException {
         JSONArray wordsJA = Json.loadArrayFromFile(path);
         for (Object wordtmp : wordsJA) {
@@ -66,15 +92,4 @@ public class Dictionary {
         pw.close();
     }
 
-    public int searchWord(String target) {
-        if (target == "" || target == null) {
-            return -1;
-        }
-        for (int i = 0; i < targetList.size(); i++) {
-            if (target.equals(targetList.get(i))) {
-                return i;
-            }
-        }
-        return -1;
-    }
 }

@@ -30,7 +30,7 @@ import javafx.stage.Stage;
 
 public class searchController implements Initializable {
     private final String MEANING_PATH = "../view/meaning.fxml";
-    private final String ADD_PATH = "../view/search-add.fxml";
+    private final String ADD_PATH = "../view/add.fxml";
     private final String EDIT_PATH = "../view/search-edit.fxml";
     private final String DICT_PATH = "src/resource/dict.json";
 
@@ -80,6 +80,11 @@ public class searchController implements Initializable {
             }
         });
         editWordButton.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
+            String target = targetListView.getSelectionModel().getSelectedItem();
+            int index = dict.searchWord(target);
+
+            TransferedData.wordIndex = index;
+            TransferedData.word = dict.getWords().get(index);
             try {
                 showEditPane();
             } catch (IOException e) {
@@ -101,6 +106,24 @@ public class searchController implements Initializable {
 
     }
 
+    public void addListViewListener() {
+        targetListView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> arg0, String arg1, String arg2) {
+                int index = dict.searchWord(arg2);
+                if (index != -1) {
+                    TransferedData.wordIndex = index;
+                    TransferedData.word = TransferedData.dict.getWords().get(index);
+                    try {
+                        switchRightPane(MEANING_PATH);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        });
+    }
+
     public void switchRightPane(String path) throws IOException {
         Node node = (Node) FXMLLoader.load(getClass().getResource(path));
         rightPane.getChildren().setAll(node);
@@ -111,8 +134,10 @@ public class searchController implements Initializable {
         String target = searchField.getText();
         System.out.println(target);
 
-        filteredTargetList.setPredicate(target.isEmpty() ? p -> true : p -> p.contains(target));
+        filteredTargetList
+                .setPredicate(target.isEmpty() ? p -> true : p -> p.toLowerCase().startsWith(target.toLowerCase()));
         targetListView.getItems().setAll(filteredTargetList);
+        targetListView.getSelectionModel().selectFirst();
     }
 
     @Override
@@ -127,20 +152,6 @@ public class searchController implements Initializable {
 
         initButtonControl();
         addListView(dict.getTargetList());
-
-        targetListView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
-            @Override
-            public void changed(ObservableValue<? extends String> arg0, String arg1, String arg2) {
-                int index = dict.searchWord(arg2);
-                if (index != -1) {
-                    TransferedData.wordIndex = index;
-                    try {
-                        switchRightPane(MEANING_PATH);
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-        });
+        addListViewListener();
     }
 }

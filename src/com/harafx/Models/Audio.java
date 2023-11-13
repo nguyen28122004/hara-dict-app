@@ -12,8 +12,13 @@ public class Audio {
     }
 
     public Audio(String us, String uk) {
-        this.us = us;
-        this.uk = uk;
+        this.us = new String(us);
+        this.uk = new String(uk);
+    }
+
+    public Audio(Audio audio) {
+        this.us = new String(audio.us);
+        this.uk = new String(audio.uk);
     }
 
     public String getUs() {
@@ -42,6 +47,11 @@ public class Audio {
         jo.put("us", us);
         jo.put("uk", uk);
         return jo;
+    }
+
+    public void clear() {
+        us = "";
+        uk = "";
     }
 
 }

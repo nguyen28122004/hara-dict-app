@@ -49,4 +49,9 @@ public class Pronunciation {
         System.out.println("UK: " + uk);
         System.out.println("--------");
     }
+
+    public void clear() {
+        us = "";
+        uk = "";
+    }
 }

@@ -1,12 +1,9 @@
 package com.harafx.Controllers;
 
-import com.harafx.Models.Json;
-
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import org.json.simple.JSONObject;
 import org.json.simple.parser.ParseException;
 
 import com.harafx.Models.TransferedData;
@@ -17,40 +14,26 @@ import javafx.beans.value.ObservableValue;
 import javafx.concurrent.Worker.State;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.ButtonType;
 import javafx.scene.input.MouseEvent;
 
-public class addController extends wordFormController implements Initializable {
+public class editController extends wordFormController implements Initializable {
 
-    private void addWord() {
+    void applyChange() {
         Alert alert = new Alert(AlertType.CONFIRMATION, "", ButtonType.OK, ButtonType.CANCEL);
-        alert.setHeaderText("Do you want to add \"" + targetField.getText() + "\" to your dictionary?");
+        alert.setHeaderText("Do you want to apply your change to \"" + targetField.getText() + "\"?");
         alert.showAndWait();
         if (alert.getResult() != ButtonType.OK) {
             return;
         }
 
         Word word = getDefElement();
-
-        if (word.getTarget() == "" || word.getTarget() == null) {
-            alert.setAlertType(AlertType.INFORMATION);
-            alert.setHeaderText("Please fill all the field before adding");
-            alert.show();
-            return;
-        }
-        if (TransferedData.dict.searchWord(word.getTarget()) != -1) {
-            alert.setAlertType(AlertType.INFORMATION);
-            alert.setHeaderText("This word is already in your dictionary");
-            alert.show();
-            return;
-        }
-
-        System.out.println("BEFORE==========================");
-        TransferedData.dict.getWords().get(TransferedData.dict.size() - 2).debug();
+        System.out.println(TransferedData.wordIndex);
+        System.out.println(TransferedData.dict.size());
+        TransferedData.dict.removeWord(TransferedData.wordIndex);
+        System.out.println(TransferedData.dict.size());
         TransferedData.dict.addWord(word);
-        System.out.println("AFTER==========================");
-        TransferedData.dict.getWords().get(TransferedData.dict.size() - 3).debug();
         try {
             TransferedData.dict.saveJson(DICT_PATH);
         } catch (IOException e) {
@@ -60,19 +43,21 @@ public class addController extends wordFormController implements Initializable {
 
         try {
             TransferedData.dict.loadJson(DICT_PATH);
+            TransferedData.dict.size.add(1);
+            TransferedData.dict.size.add(-1);
         } catch (IOException | ParseException e) {
             e.printStackTrace();
         }
 
         alert.setAlertType(AlertType.INFORMATION);
-        alert.setHeaderText("Your word is added. Please reload the application");
+        alert.setHeaderText("Your change is apply. Please reload the application");
         alert.show();
         wrapFormPane.getChildren().clear();
     }
 
     void initButtonControl() {
         okButton.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
-            addWord();
+            applyChange();
         });
 
         cancelButton.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
@@ -82,9 +67,6 @@ public class addController extends wordFormController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        TransferedData.word.clear();
-        loadHTML(FORM_PATH);
-
         driver.getLoadWorker().stateProperty().addListener(new ChangeListener<State>() {
 
             @Override
@@ -95,6 +77,8 @@ public class addController extends wordFormController implements Initializable {
                 }
             }
         });
+        loadHTML(FORM_PATH);
+        initButtonControl();
     }
 
 }

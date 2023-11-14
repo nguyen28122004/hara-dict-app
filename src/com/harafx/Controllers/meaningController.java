@@ -29,6 +29,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
+import javafx.scene.media.AudioClip;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.web.WebEngine;
@@ -44,15 +45,15 @@ public class meaningController extends wordFormController implements Initializab
     Pane ukAudioButton = new Pane();
 
     @FXML
-    Label targetLabel = new Label();
-    @FXML
     Label usPronunciation = new Label();
     @FXML
     Label ukPronunciation = new Label();
 
     void playAudio(String url) {
-        Media sound = new Media(url);
-        MediaPlayer mediaPlayer = new MediaPlayer(sound);
+        // Media sound = new Media(url);
+        // MediaPlayer mediaPlayer = new MediaPlayer(sound);
+        AudioClip mediaPlayer = new AudioClip(url);
+
         mediaPlayer.play();
         System.out.println(url);
     }
@@ -60,7 +61,7 @@ public class meaningController extends wordFormController implements Initializab
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         Word word = TransferedData.dict.getWords().get(TransferedData.wordIndex);
-        targetLabel.setText(word.getTarget());
+
         usPronunciation.setText("/" + word.getIpa().getUs() + "/");
         ukPronunciation.setText("/" + word.getIpa().getUk() + "/");
 

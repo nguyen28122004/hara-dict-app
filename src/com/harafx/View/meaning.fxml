@@ -25,11 +25,11 @@
 
 <AnchorPane fx:id="rightSearchPane" prefHeight="529.0" prefWidth="698.0" stylesheets="style/search.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.harafx.Controllers.meaningController">
    <children>
-      <Label fx:id="targetLabel" layoutX="21.0" layoutY="8.0" prefHeight="52.0" prefWidth="649.0" text="Target words" textFill="#16325c">
+      <TextField fx:id="targetField" editable="false" layoutX="-3.0" layoutY="-4.0" prefHeight="82.0" prefWidth="689.0" style="-fx-background-color: none; -fx-text-fill: #16325c;" text="Target">
          <font>
             <Font name="Segoe UI Bold" size="43.0" />
          </font>
-      </Label>
+      </TextField>
       <HBox cacheShape="false" layoutX="26.0" layoutY="62.0" prefHeight="25.0" prefWidth="356.0">
          <children>
             <Label layoutX="10.0" layoutY="10.0" prefHeight="25.0" prefWidth="24.0" text="US" textFill="#16325c">

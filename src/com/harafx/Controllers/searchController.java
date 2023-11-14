@@ -11,6 +11,7 @@ import org.json.simple.parser.ParseException;
 
 import com.harafx.Models.Dictionary;
 import com.harafx.Models.TransferedData;
+import com.harafx.Models.Word;
 
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -31,7 +32,7 @@ import javafx.stage.Stage;
 public class searchController implements Initializable {
     private final String MEANING_PATH = "../view/meaning.fxml";
     private final String ADD_PATH = "../view/add.fxml";
-    private final String EDIT_PATH = "../view/search-edit.fxml";
+    private final String EDIT_PATH = "../view/edit.fxml";
     private final String DICT_PATH = "src/resource/dict.json";
 
     private Dictionary dict = new Dictionary();
@@ -72,7 +73,10 @@ public class searchController implements Initializable {
 
     void initButtonControl() {
         addWordButton.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
+
             try {
+                TransferedData.wordIndex = -1;
+                TransferedData.word = new Word();
                 targetListView.getSelectionModel().clearSelection();
                 showAddPane();
             } catch (IOException e) {
@@ -84,7 +88,7 @@ public class searchController implements Initializable {
             int index = dict.searchWord(target);
 
             TransferedData.wordIndex = index;
-            TransferedData.word = dict.getWords().get(index);
+            TransferedData.word = new Word(dict.getWords().get(index));
             try {
                 showEditPane();
             } catch (IOException e) {
@@ -92,15 +96,23 @@ public class searchController implements Initializable {
             }
         });
         deleteWordButton.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
-            // Delete selected word here
+            TransferedData.dict.removeWord(TransferedData.wordIndex);
+            setListView(TransferedData.dict.getTargetList());
+
+            try {
+                TransferedData.dict.saveJson(DICT_PATH);
+            } catch (IOException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
         });
         addFavButton.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
             // Add selected word to fav list here
         });
     }
 
-    public void addListView(ArrayList<String> targetList) {
-        targetListView.getItems().addAll(targetList);
+    public void setListView(ArrayList<String> targetList) {
+        targetListView.getItems().setAll(targetList);
 
         filteredTargetList = new FilteredList<>(FXCollections.observableArrayList(targetList), p -> true);
 
@@ -113,7 +125,7 @@ public class searchController implements Initializable {
                 int index = dict.searchWord(arg2);
                 if (index != -1) {
                     TransferedData.wordIndex = index;
-                    TransferedData.word = TransferedData.dict.getWords().get(index);
+                    TransferedData.word = new Word(TransferedData.dict.getWords().get(index));
                     try {
                         switchRightPane(MEANING_PATH);
                     } catch (IOException e) {
@@ -121,6 +133,15 @@ public class searchController implements Initializable {
                     }
                 }
             }
+        });
+
+        TransferedData.dict.size.addListener(new ChangeListener<Number>() {
+
+            @Override
+            public void changed(ObservableValue<? extends Number> arg0, Number arg1, Number arg2) {
+                setListView(dict.getTargetList());
+            }
+
         });
     }
 
@@ -132,7 +153,6 @@ public class searchController implements Initializable {
     public void search() {
         targetListView.getSelectionModel().selectFirst();
         String target = searchField.getText();
-        System.out.println(target);
 
         filteredTargetList
                 .setPredicate(target.isEmpty() ? p -> true : p -> p.toLowerCase().startsWith(target.toLowerCase()));
@@ -145,13 +165,13 @@ public class searchController implements Initializable {
 
         try {
             dict.loadJson(DICT_PATH);
-            TransferedData.dict = new Dictionary(dict);
+            TransferedData.dict = dict;
         } catch (IOException | ParseException e) {
             e.printStackTrace();
         }
 
         initButtonControl();
-        addListView(dict.getTargetList());
+        setListView(dict.getTargetList());
         addListViewListener();
     }
 }

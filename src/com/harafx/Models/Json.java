@@ -20,10 +20,9 @@ public class Json {
         return (JSONArray) obj;
     }
 
-    // static public JSONObject loadObjectFromString(JSONObject jo, String str)
-    // throws ParseException {
-    // return (JSONObject) new JSONParser().parse(str);
-    // }
+    static public JSONObject loadObjectFromString(String str) throws ParseException {
+        return (JSONObject) new JSONParser().parse(str);
+    }
 
     // static public JSONObject loadPropObjFromObject(JSONObject jo, String prop)
     // throws ParseException {

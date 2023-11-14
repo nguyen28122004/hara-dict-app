@@ -17,6 +17,4 @@ public class TransferedData {
     public static Defination def = new Defination();
     public static Meaning meaning = new Meaning();
     public static int wordIndex = -1;
-    public static IntegerProperty meaningCount = new SimpleIntegerProperty(0);
-    public static BooleanProperty confirmation = new SimpleBooleanProperty(false);
 }

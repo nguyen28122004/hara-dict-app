@@ -18,6 +18,15 @@ public class Word {
     public Word() {
     }
 
+    public Word(Word word) {
+        this.target = word.getTarget();
+        this.ipa = word.getIpa();
+        this.defs = word.getDefs();
+        this.audio = word.getAudio();
+        this.en_en_URL = word.getEn_en_URL();
+        this.en_vi_URL = word.getEn_vi_URL();
+    }
+
     public Word(String target, Pronunciation ipa, ArrayList<Defination> defs) {
         this.target = target;
         this.ipa = ipa;

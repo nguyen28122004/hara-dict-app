@@ -2,6 +2,9 @@ package com.harafx.Models;
 
 import com.harafx.Models.Json;
 
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -16,8 +19,8 @@ import org.json.simple.parser.ParseException;
 
 public class Dictionary {
     private ArrayList<String> targetList = new ArrayList<>();
-
     private ArrayList<Word> words = new ArrayList<>();
+    public IntegerProperty size = new SimpleIntegerProperty(0);
 
     public Dictionary() {
     }
@@ -70,6 +73,8 @@ public class Dictionary {
     }
 
     public void loadJson(String path) throws FileNotFoundException, IOException, ParseException {
+        words.clear();
+        targetList.clear();
         JSONArray wordsJA = Json.loadArrayFromFile(path);
         for (Object wordtmp : wordsJA) {
             Word word = new Word();
@@ -79,6 +84,7 @@ public class Dictionary {
             // System.out.println("==========================================");
             // word.debug();
         }
+        size.set(targetList.size());
     }
 
     public void saveJson(String path) throws IOException {

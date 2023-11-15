@@ -4,6 +4,9 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import com.harafx.Models.Stopwatch;
+import com.harafx.Models.TransferedData;
+
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -54,6 +57,10 @@ public class mainController extends generalController implements Initializable {
 
     void quit() {
         Platform.exit();
+        for (Stopwatch thread : TransferedData.threads) {
+            System.out.println(thread.getName());
+            thread.isStopped = true;
+        }
     };
 
     void minimize() {

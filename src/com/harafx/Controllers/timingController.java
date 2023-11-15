@@ -4,6 +4,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import com.harafx.Models.Stopwatch;
+import com.harafx.Models.TransferedData;
 
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
@@ -114,6 +115,7 @@ public class timingController implements Initializable {
         timerLabel.setEditable(false);
         addListener();
         timer.start();
+        TransferedData.threads.add(timer);
     }
 
     private void pauseTimer() {

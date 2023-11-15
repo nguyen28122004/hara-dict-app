@@ -59,7 +59,7 @@ public class Stopwatch extends Thread {
             } catch (InterruptedException e) {
             }
             this.sec = totalTime % 60;
-            if (isStopped) {
+            if (isStopped || Thread.interrupted()) {
                 break;
             }
             this.obsTimer.set(this.totalTime);

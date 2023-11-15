@@ -22,11 +22,11 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="531.0" prefWidth="1090.0" stylesheets="style/ggtranslate.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="531.0" prefWidth="1090.0" stylesheets="style/ggtranslate.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.harafx.Controllers.translatorController">
    <children>
       <VBox layoutX="26.0" layoutY="14.0" prefHeight="504.0" prefWidth="626.0">
          <children>
-            <TextArea prefHeight="206.0" prefWidth="626.0" promptText="Type here for translating" wrapText="true">
+            <TextArea fx:id="targetArea" prefHeight="206.0" prefWidth="626.0" promptText="Type here for translating" wrapText="true">
                <cursor>
                   <Cursor fx:constant="TEXT" />
                </cursor></TextArea>
@@ -34,14 +34,16 @@
                <children>
                   <HBox alignment="CENTER" layoutY="21.0" prefHeight="42.0" prefWidth="626.0">
                      <children>
-                        <ComboBox prefHeight="51.0" prefWidth="158.0" />
+                        <ComboBox fx:id="langFrom" prefHeight="51.0" prefWidth="158.0" />
                         <AnchorPane prefHeight="42.0" prefWidth="41.0" />
-                        <ComboBox layoutX="10.0" layoutY="10.0" prefHeight="51.0" prefWidth="158.0" />
+                        <ComboBox fx:id="langTo" layoutX="10.0" layoutY="10.0" prefHeight="51.0" prefWidth="158.0" />
+                        <AnchorPane layoutX="248.0" layoutY="10.0" prefHeight="42.0" prefWidth="41.0" />
+                        <Button fx:id="translateButton" mnemonicParsing="false" prefHeight="42.0" prefWidth="101.0" text="Translate" />
                      </children>
                   </HBox>
                </children>
             </AnchorPane>
-            <TextArea disable="true" editable="false" layoutX="10.0" layoutY="10.0" prefHeight="211.0" prefWidth="626.0" wrapText="true">
+            <TextArea fx:id="resultArea" editable="false" layoutX="10.0" layoutY="10.0" prefHeight="211.0" prefWidth="626.0" wrapText="true">
                <cursor>
                   <Cursor fx:constant="TEXT" />
                </cursor></TextArea>
@@ -52,7 +54,7 @@
             <Font name="System Bold" size="46.0" />
          </font>
       </Label>
-      <TextArea editable="false" layoutX="666.0" layoutY="62.0" prefHeight="396.0" prefWidth="399.0" style="-fx-background-color: none; -fx-border-color: none;" text="This function is developed base on Google Cloud Translate API. This implies that anything you type in the above box is going to be sent to Google and we get the data from Google then show to you in the below box. You can go to Google Translate web version if there is any error with this function.&#10;Thank you for using our application.&#10;&#10;" wrapText="true" />
-      <Hyperlink layoutX="673.0" layoutY="288.0" text="Google Translate (web version)" />
+      <TextArea editable="false" layoutX="666.0" layoutY="62.0" prefHeight="396.0" prefWidth="399.0" style="-fx-background-color: none; -fx-border-color: none;" text="This function is developed base on Google Cloud Translate API. This implies that anything you type in the above box is going to be sent to Google and we get the data from Google then show to you in the below box. But it is not offical Google Translate API so you can go to Google Translate web version if there is any error with this function.&#10;Thank you for using our application.&#10;&#10;" wrapText="true" />
+      <Hyperlink fx:id="hypLink" layoutX="673.0" layoutY="315.0" text="Google Translate (web version)" />
    </children>
 </AnchorPane>

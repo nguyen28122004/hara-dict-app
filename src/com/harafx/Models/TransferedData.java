@@ -17,4 +17,5 @@ public class TransferedData {
     public static Defination def = new Defination();
     public static Meaning meaning = new Meaning();
     public static int wordIndex = -1;
+    public static String str = "";
 }

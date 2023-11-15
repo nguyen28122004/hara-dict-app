@@ -30,14 +30,14 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="538.0" prefWidth="1090.0" stylesheets="style/timing.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="538.0" prefWidth="1090.0" stylesheets="style/timing.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.harafx.Controllers.timingController">
    <children>
-      <Label layoutX="246.0" layoutY="208.0" text="20:10:23" textFill="#16325c">
+      <TextField fx:id="timerLabel" alignment="CENTER" focusTraversable="false" layoutX="11.0" layoutY="151.0" prefHeight="281.0" prefWidth="1069.0" promptText="hh:mm:ss" style="-fx-background-color: none; -fx-text-fill: #16325c;" text="00:30:00">
          <font>
-            <Font name="System Bold" size="150.0" />
+            <Font name="Segoe UI Bold" size="150.0" />
          </font>
-      </Label>
-      <Pane layoutX="484.0" layoutY="427.0" prefHeight="40.0" prefWidth="40.0">
+      </TextField>
+      <Pane fx:id="pauseButton" layoutX="484.0" layoutY="392.0" prefHeight="40.0" prefWidth="40.0" visible="false">
          <children>
             <ImageView fitHeight="40.0" fitWidth="40.0">
                <image>
@@ -49,7 +49,7 @@
             </ImageView>
          </children>
       </Pane>
-      <Pane layoutX="545.0" layoutY="427.0" prefHeight="40.0" prefWidth="40.0">
+      <Pane fx:id="reButton" layoutX="545.0" layoutY="392.0" prefHeight="40.0" prefWidth="40.0">
          <children>
             <ImageView fitHeight="40.0" fitWidth="40.0">
                <image>
@@ -61,7 +61,7 @@
             </ImageView>
          </children>
       </Pane>
-      <Pane layoutX="484.0" layoutY="427.0" prefHeight="40.0" prefWidth="40.0" visible="false">
+      <Pane fx:id="continueButton" layoutX="482.0" layoutY="393.0" prefHeight="40.0" prefWidth="40.0">
          <children>
             <ImageView fitHeight="40.0" fitWidth="40.0">
                <image>
@@ -86,16 +86,6 @@
                </font>
             </Label>
             <AnchorPane prefHeight="22.0" prefWidth="681.0" />
-            <Label text="Tóm tắt" textFill="#16325c">
-               <font>
-                  <Font name="System Bold Italic" size="18.0" />
-               </font>
-            </Label>
-            <Label prefHeight="27.0" prefWidth="265.0" text="&quot;Không học thì ăn ..., ăn ...&quot;" textFill="#16325c">
-               <font>
-                  <Font name="System Bold Italic" size="18.0" />
-               </font>
-            </Label>
          </children>
       </VBox>
    </children>

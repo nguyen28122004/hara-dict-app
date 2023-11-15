@@ -21,7 +21,9 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 
-public class translatorController extends TranslateAPI implements Initializable {
+import com.harafx.Models.TranslateAPI;
+
+public class translatorController implements Initializable {
 
     String[] langs = { "Vietnamese", "English", "Germany", "French", "Russian", "Chinese", "Japanese" };
     String[] langIso = { "vi", "en", "de", "fr", "ru", "zh", "ja" };
@@ -70,7 +72,7 @@ public class translatorController extends TranslateAPI implements Initializable 
             return "";
         }
 
-        return translate(langIso[indexFrom], langIso[indexTo], targetArea.getText());
+        return TranslateAPI.translate(langIso[indexFrom], langIso[indexTo], targetArea.getText());
     }
 
     void addTranslateListener() {

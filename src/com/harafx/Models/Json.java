@@ -3,6 +3,7 @@ package com.harafx.Models;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -22,6 +23,17 @@ public class Json {
 
     static public JSONObject loadObjectFromString(String str) throws ParseException {
         return (JSONObject) new JSONParser().parse(str);
+    }
+
+    static public ArrayList<String> jsonArrayToArrayList(JSONArray ja) {
+        ArrayList<String> res = new ArrayList<>();
+        if (ja.size() == 0) {
+            return res;
+        }
+        for (Object obj : ja) {
+            res.add((String) obj);
+        }
+        return res;
     }
 
     // static public JSONObject loadPropObjFromObject(JSONObject jo, String prop)

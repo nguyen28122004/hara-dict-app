@@ -6,14 +6,17 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
 public class User {
-    String name = new String();
-    String email = new String();
+    public static String name = new String();
+    public static String email = new String();
+    public static ArrayList<String> favList = new ArrayList<>();
 
     public User() {
 
@@ -24,26 +27,20 @@ public class User {
         this.email = email;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
+    public User(String name, String email, JSONArray favJa) {
         this.name = name;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
         this.email = email;
+        favList = Json.jsonArrayToArrayList(favJa);
     }
 
-    public void saveUser(String path) throws FileNotFoundException {
+    public static void saveUser(String path) throws FileNotFoundException {
         JSONObject user = new JSONObject();
-        user.put("name", this.name);
-        user.put("email", this.email);
+        JSONArray fav = new JSONArray();
+        fav.addAll(favList);
+
+        user.put("name", name);
+        user.put("email", email);
+        user.put("fav", fav);
 
         PrintWriter pw = new PrintWriter(path);
         pw.write(user.toJSONString());
@@ -52,20 +49,13 @@ public class User {
         pw.close();
     }
 
-    public static void saveUser(String path, User userObject) throws FileNotFoundException {
-        JSONObject user = new JSONObject();
-        user.put("name", userObject.name);
-        user.put("email", userObject.email);
-        PrintWriter pw = new PrintWriter(path);
-        pw.write(user.toJSONString());
-
-        pw.flush();
-        pw.close();
-    }
-
-    public static User loadUser(String path)
+    public static void loadUser(String path)
             throws FileNotFoundException, IOException, ParseException {
         JSONObject user = Json.loadObjectFromFile(path);
-        return new User((String) user.get("name"), (String) user.get("email"));
+        name = (String) user.get("name");
+        email = (String) user.get("email");
+
+        JSONArray favJa = (JSONArray) user.get("fav");
+        favList = Json.jsonArrayToArrayList(favJa);
     }
 }

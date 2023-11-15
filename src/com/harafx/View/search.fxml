@@ -66,7 +66,7 @@
                         </StackPane>
                         <StackPane fx:id="addFavButton" layoutX="10.0" layoutY="443.0" prefHeight="39.0" prefWidth="39.0" styleClass="tool-button">
                            <children>
-                              <ImageView fitHeight="32.0" fitWidth="32.0">
+                              <ImageView fx:id="favImg" fitHeight="32.0" fitWidth="32.0">
                                  <image>
                                     <Image url="@../../../resource/dark%20blue%20icon/heart-outline.png" />
                                  </image>

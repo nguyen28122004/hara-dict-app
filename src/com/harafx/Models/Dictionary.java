@@ -11,6 +11,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Comparator;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -57,19 +58,26 @@ public class Dictionary {
     }
 
     public int searchWord(String target) {
-        if (target == "" || target == null) {
-            return -1;
-        }
-        for (int i = 0; i < targetList.size(); i++) {
-            if (target.equals(targetList.get(i))) {
-                return i;
-            }
-        }
-        return -1;
+        // if (target == "" || target == null) {
+        // return -1;
+        // }
+        // for (int i = 0; i < targetList.size(); i++) {
+        // if (target.equals(targetList.get(i))) {
+        // return i;
+        // }
+        // }
+        // return -1;
+
+        return targetList.indexOf(target);
     }
 
     public int size() {
         return words.size();
+    }
+
+    public void sort() {
+        words.sort((o1, o2) -> o1.getTarget().compareTo(o2.getTarget()));
+        targetList.sort((o1, o2) -> o1.compareTo(o2));
     }
 
     public void loadJson(String path) throws FileNotFoundException, IOException, ParseException {
@@ -85,6 +93,7 @@ public class Dictionary {
             // word.debug();
         }
         size.set(targetList.size());
+        this.sort();
     }
 
     public void saveJson(String path) throws IOException {

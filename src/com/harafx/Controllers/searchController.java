@@ -1,5 +1,7 @@
 package com.harafx.Controllers;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -11,6 +13,7 @@ import org.json.simple.parser.ParseException;
 
 import com.harafx.Models.Dictionary;
 import com.harafx.Models.TransferedData;
+import com.harafx.Models.User;
 import com.harafx.Models.Word;
 
 import javafx.beans.value.ChangeListener;
@@ -24,18 +27,22 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 public class searchController implements Initializable {
-    private final String MEANING_PATH = "../view/meaning.fxml";
-    private final String ADD_PATH = "../view/add.fxml";
-    private final String EDIT_PATH = "../view/edit.fxml";
-    private final String DICT_PATH = "src/resource/dict.json";
+    protected final String MEANING_PATH = "../view/meaning.fxml";
+    protected final String ADD_PATH = "../view/add.fxml";
+    protected final String EDIT_PATH = "../view/edit.fxml";
+    protected final String DICT_PATH = "src/resource/dict.json";
+    protected final String FAV_IMG_FILLED = "src/resource/dark blue icon/heart-filled.png";
+    protected final String FAV_IMG_OUTLINE = "src/resource/dark blue icon/heart-outline.png";
 
-    private Dictionary dict = new Dictionary();
+    protected Dictionary dict = new Dictionary();
     FilteredList<String> filteredTargetList;
 
     @FXML
@@ -55,6 +62,8 @@ public class searchController implements Initializable {
     StackPane editWordButton = new StackPane();
     @FXML
     StackPane addFavButton = new StackPane();
+    @FXML
+    ImageView favImg = new ImageView();
 
     void showMeaningPane() throws IOException {
         Node node = (Node) FXMLLoader.load(getClass().getResource(MEANING_PATH));
@@ -62,16 +71,67 @@ public class searchController implements Initializable {
     }
 
     void showAddPane() throws IOException {
+        TransferedData.wordIndex = -1;
+        TransferedData.word = new Word();
+        targetListView.getSelectionModel().clearSelection();
+
         Node node = (Node) FXMLLoader.load(getClass().getResource(ADD_PATH));
         rightPane.getChildren().setAll(node);
     }
 
     void showEditPane() throws IOException {
+        String target = targetListView.getSelectionModel().getSelectedItem();
+        int index = dict.searchWord(target);
+
+        TransferedData.wordIndex = index;
+        TransferedData.word = new Word(dict.getWords().get(index));
+
         Node node = (Node) FXMLLoader.load(getClass().getResource(EDIT_PATH));
         rightPane.getChildren().setAll(node);
     }
 
+    private void deleteWord() {
+        TransferedData.dict.removeWord(TransferedData.wordIndex);
+        setListView(TransferedData.dict.getTargetList());
+
+        try {
+            TransferedData.dict.saveJson(DICT_PATH);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void setFavImage(String path) {
+        File file = new File(path);
+        Image image = new Image(file.toURI().toString());
+        favImg.setImage(image);
+    }
+
+    private void addFavWord() {
+        String target = targetListView.getSelectionModel().getSelectedItem();
+
+        if (target == null) {
+            return;
+        }
+
+        if (User.favList.indexOf(target) == -1) {
+            setFavImage(FAV_IMG_FILLED);
+            User.favList.add(target);
+        } else {
+            setFavImage(FAV_IMG_OUTLINE);
+            User.favList.remove(target);
+        }
+
+        try {
+            User.saveUser("src/resource/user.json");
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
+    }
+
     void initButtonControl() {
+
         addWordButton.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
 
             try {
@@ -83,6 +143,7 @@ public class searchController implements Initializable {
                 e.printStackTrace();
             }
         });
+
         editWordButton.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
             String target = targetListView.getSelectionModel().getSelectedItem();
             int index = dict.searchWord(target);
@@ -95,19 +156,13 @@ public class searchController implements Initializable {
                 e.printStackTrace();
             }
         });
-        deleteWordButton.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
-            TransferedData.dict.removeWord(TransferedData.wordIndex);
-            setListView(TransferedData.dict.getTargetList());
 
-            try {
-                TransferedData.dict.saveJson(DICT_PATH);
-            } catch (IOException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }
+        deleteWordButton.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
+            deleteWord();
         });
+
         addFavButton.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
-            // Add selected word to fav list here
+            addFavWord();
         });
     }
 
@@ -115,7 +170,6 @@ public class searchController implements Initializable {
         targetListView.getItems().setAll(targetList);
 
         filteredTargetList = new FilteredList<>(FXCollections.observableArrayList(targetList), p -> true);
-
     }
 
     public void addListViewListener() {
@@ -123,14 +177,23 @@ public class searchController implements Initializable {
             @Override
             public void changed(ObservableValue<? extends String> arg0, String arg1, String arg2) {
                 int index = dict.searchWord(arg2);
-                if (index != -1) {
-                    TransferedData.wordIndex = index;
-                    TransferedData.word = new Word(TransferedData.dict.getWords().get(index));
-                    try {
-                        switchRightPane(MEANING_PATH);
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
+
+                if (index == -1) {
+                    return;
+                }
+
+                if (User.favList.indexOf(arg2) == -1) {
+                    setFavImage(FAV_IMG_OUTLINE);
+                } else {
+                    setFavImage(FAV_IMG_FILLED);
+                }
+
+                TransferedData.wordIndex = index;
+                TransferedData.word = new Word(TransferedData.dict.getWords().get(index));
+                try {
+                    switchRightPane(MEANING_PATH);
+                } catch (IOException e) {
+                    e.printStackTrace();
                 }
             }
         });

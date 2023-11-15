@@ -34,12 +34,12 @@ public class homeController extends generalController implements Initializable {
     AnchorPane contentPane = new AnchorPane();
 
     public void loadName() throws FileNotFoundException, IOException, ParseException {
-        nameField.setText(User.loadUser("src/resource/user.json").getName());
+        User.loadUser("src/resource/user.json");
+        nameField.setText(User.name);
     }
 
     public void saveName(KeyEvent event) throws FileNotFoundException {
-        User.saveUser("src/resource/user.json", new User(nameField.getText(), ""));
-        System.out.println(nameField.getText());
+        User.saveUser("src/resource/user.json");
     }
 
     private void initButtonControl() {

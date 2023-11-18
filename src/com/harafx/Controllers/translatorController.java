@@ -58,7 +58,7 @@ public class translatorController implements Initializable {
         langTo.getItems().setAll(langs);
 
         langFrom.getSelectionModel().selectFirst();
-        langTo.getSelectionModel().selectFirst();
+        langTo.getSelectionModel().select(1);
     }
 
     String getTranslateRes() throws IOException {

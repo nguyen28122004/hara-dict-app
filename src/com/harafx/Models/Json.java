@@ -11,14 +11,27 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
 public class Json {
-    static public JSONObject loadObjectFromFile(String path) throws FileNotFoundException, IOException, ParseException {
-        Object obj = new JSONParser().parse(new FileReader(path));
-        return (JSONObject) obj;
+    static public JSONObject loadObjectFromFile(String path) {
+        Object obj;
+        try {
+            obj = new JSONParser().parse(new FileReader(path));
+            return (JSONObject) obj;
+        } catch (IOException | ParseException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
-    static public JSONArray loadArrayFromFile(String path) throws FileNotFoundException, IOException, ParseException {
-        Object obj = new JSONParser().parse(new FileReader(path));
-        return (JSONArray) obj;
+    static public JSONArray loadArrayFromFile(String path) {
+        try {
+            Object obj;
+            obj = new JSONParser().parse(new FileReader(path));
+            return (JSONArray) obj;
+        } catch (IOException | ParseException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return null;
     }
 
     static public JSONObject loadObjectFromString(String str) throws ParseException {

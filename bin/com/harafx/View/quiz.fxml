@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.web.*?>
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="538.0" prefWidth="1090.0" stylesheets="style/game-menu.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.harafx.Controllers.quizController">
+   <children>
+      <Button fx:id="buttonA" layoutX="29.0" layoutY="210.0" mnemonicParsing="false" prefHeight="140.0" prefWidth="329.0" text="Button" />
+      <Button fx:id="buttonD" layoutX="407.0" layoutY="374.0" mnemonicParsing="false" prefHeight="140.0" prefWidth="329.0" text="Button" />
+      <Button fx:id="buttonC" layoutX="29.0" layoutY="374.0" mnemonicParsing="false" prefHeight="140.0" prefWidth="329.0" text="Button" />
+      <Button fx:id="buttonB" layoutX="407.0" layoutY="210.0" mnemonicParsing="false" prefHeight="140.0" prefWidth="329.0" text="Button" />
+      <Text fx:id="qText" fill="#16325c" layoutX="29.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse " visible="false" wrappingWidth="705.826171875">
+         <font>
+            <Font name="System Bold" size="21.0" />
+         </font>
+      </Text>
+      <AnchorPane layoutX="820.0" prefHeight="513.0" prefWidth="223.0" style="-fx-border-color: #16325c; -fx-border-radius: 10px;">
+         <children>
+            <AnchorPane layoutX="11.0" layoutY="8.0">
+               <children>
+                  <Button fx:id="halfButton" layoutY="356.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="202.0" text="50 / 50" textFill="#16325c">
+                     <font>
+                        <Font name="System Bold" size="23.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="callRelativesButton" layoutY="435.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="202.0" text="Call relatives" textFill="#16325c">
+                     <font>
+                        <Font name="System Bold" size="23.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="swapAnsButton" layoutY="275.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="202.0" text="Swap Answers" textFill="#16325c">
+                     <font>
+                        <Font name="System Bold" size="23.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="nextQuesButton" layoutY="194.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="202.0" text="Next question" textFill="#16325c">
+                     <font>
+                        <Font name="System Bold" size="23.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="showAnsButton" layoutY="112.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="202.0" text="Show Answer" textFill="#16325c">
+                     <font>
+                        <Font name="System Bold" size="23.0" />
+                     </font>
+                  </Button>
+                  <VBox alignment="CENTER" layoutX="21.0">
+                     <children>
+                        <Circle fx:id="avatarCircle" fill="DODGERBLUE" layoutX="18.0" layoutY="25.0" radius="38.0" strokeType="INSIDE" strokeWidth="4.0">
+                           <stroke>
+                              <LinearGradient endX="1.0" endY="1.0">
+                                 <stops>
+                                    <Stop color="#16325c" />
+                                    <Stop color="#547cb9" offset="1.0" />
+                                 </stops>
+                              </LinearGradient>
+                           </stroke>
+                           <effect>
+                              <DropShadow color="#0000003d" />
+                           </effect>
+                        </Circle>
+                        <AnchorPane prefHeight="0.0" prefWidth="10.0" />
+                        <Label fx:id="usernameLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="49.0" layoutY="14.0" prefHeight="36.0" prefWidth="161.0" text="Username" textFill="#ab3030">
+                           <font>
+                              <Font name="System Bold" size="25.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+      <WebView fx:id="qTextWebview" blendMode="DARKEN" layoutX="29.0" layoutY="5.0" prefHeight="196.0" prefWidth="706.0" />
+   </children>
+</AnchorPane>

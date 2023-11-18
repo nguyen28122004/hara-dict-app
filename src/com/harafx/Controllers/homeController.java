@@ -39,6 +39,7 @@ public class homeController extends generalController implements Initializable {
     }
 
     public void saveName(KeyEvent event) throws FileNotFoundException {
+        User.name = nameField.getText();
         User.saveUser("src/resource/user.json");
     }
 

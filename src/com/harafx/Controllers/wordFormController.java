@@ -25,13 +25,11 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 
-public class wordFormController {
+public class wordFormController extends htmlController {
 
     final String MEANING_PATH = "src/com/harafx/view/meaning.html";
     final String FORM_PATH = "src/com/harafx/view/form.html";
     final String DICT_PATH = "src/resource/dict.json";
-
-    String htmlString = new String();
 
     @FXML
     AnchorPane wrapFormPane = new AnchorPane();
@@ -79,17 +77,7 @@ public class wordFormController {
     }
 
     public void loadHTML(String path) {
-        try (FileReader file = new FileReader(new File(path))) {
-
-            int i;
-            while ((i = file.read()) != -1) {
-                htmlString += (char) i;
-            }
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-
+        loadHTMLString(path);
         parseElements();
 
         defPane.setContextMenuEnabled(false);

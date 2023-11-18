@@ -1,0 +1,21 @@
+.myDialog {
+    -fx-min-width: 500;
+    -fx-pref-width: 500;
+    -fx-max-width: 500;
+    -fx-max-height: 1000;
+}
+
+.myDialog>*.label {
+    -fx-word-wrap: break-word;
+    -fx-wrap-text: 'true';
+    -fx-font-size: 19px;
+    -fx-min-width: 500;
+    -fx-pref-width: 100;
+    -fx-max-height: 1000;
+}
+
+.myDialog:header *.header-panel *.label {
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #16325c;
+}

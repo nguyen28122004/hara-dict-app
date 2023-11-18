@@ -1,8 +1,5 @@
 package com.harafx.Controllers;
 
-import java.awt.List;
-import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -11,10 +8,6 @@ import java.util.ResourceBundle;
 
 import com.harafx.Models.Quiz;
 
-import javafx.application.Platform;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
-import javafx.concurrent.Worker.State;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -22,15 +15,13 @@ import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.shape.Circle;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
-import netscape.javascript.JSObject;
 
 public class menuGameController extends htmlController implements Initializable {
     final String FILL = "../view/quiz.fxml";
     final String QUIZ = "../view/quiz.fxml";
-    final String MATCH = "../view/quiz.fxml";
+    final String MATCH = "../view/match.fxml";
 
     ArrayList<String> gamePath = new ArrayList<>();
     int currentGameSelect = -1;
@@ -45,6 +36,8 @@ public class menuGameController extends htmlController implements Initializable 
 
     @FXML
     AnchorPane cardGameButton = new AnchorPane();
+    @FXML
+    AnchorPane matchGameButton = new AnchorPane();
 
     @FXML
     Button startButton = new Button();
@@ -67,9 +60,17 @@ public class menuGameController extends htmlController implements Initializable 
             driver.loadContent(htmlString);
         });
 
+        matchGameButton.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
+            currentGameSelect = 2;
+            loadHTMLString("src/com/harafx/view/matchGameInfo.html");
+            driver.loadContent(htmlString);
+        });
         startButton.setOnAction(event -> {
             if (currentGameSelect == 1) {
                 quizGame();
+            }
+            if (currentGameSelect == 2) {
+                matchGame();
             }
         });
     }
@@ -82,6 +83,10 @@ public class menuGameController extends htmlController implements Initializable 
         }
         Quiz.pathSource = "src/resource/quiz/" + quizCollectionIndex + ".json";
         System.out.println(Quiz.pathSource);
+        switchView(gamePath.get(currentGameSelect));
+    }
+
+    private void matchGame() {
         switchView(gamePath.get(currentGameSelect));
     }
 

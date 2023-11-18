@@ -1,9 +1,5 @@
 package com.harafx.Controllers;
 
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
-
 import org.json.simple.parser.ParseException;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -151,7 +147,6 @@ public class wordFormController extends htmlController {
         try {
             word.convertFromJson(Json.loadObjectFromString(jsonString));
         } catch (ParseException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
 

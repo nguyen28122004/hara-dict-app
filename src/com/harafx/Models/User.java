@@ -1,16 +1,12 @@
 package com.harafx.Models;
 
-import com.harafx.Models.Json;
-
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
 public class User {
@@ -23,13 +19,13 @@ public class User {
     }
 
     public User(String name, String email) {
-        this.name = name;
-        this.email = email;
+        User.name = name;
+        User.email = email;
     }
 
     public User(String name, String email, JSONArray favJa) {
-        this.name = name;
-        this.email = email;
+        User.name = name;
+        User.email = email;
         favList = Json.jsonArrayToArrayList(favJa);
     }
 

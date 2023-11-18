@@ -1,22 +1,13 @@
 package com.harafx.Models;
 
-import com.harafx.Models.Json;
-
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
-import java.util.Comparator;
-
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
 
 public class Dictionary {
     private ArrayList<String> targetList = new ArrayList<>();
@@ -80,7 +71,7 @@ public class Dictionary {
         targetList.sort((o1, o2) -> o1.compareTo(o2));
     }
 
-    public void loadJson(String path) throws FileNotFoundException, IOException, ParseException {
+    public void loadJson(String path) {
         words.clear();
         targetList.clear();
         JSONArray wordsJA = Json.loadArrayFromFile(path);

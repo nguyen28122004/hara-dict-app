@@ -1,5 +1,6 @@
 package com.harafx.Controllers;
 
+import com.harafx.Models.TransferedData;
 import com.harafx.Models.User;
 
 import java.io.FileNotFoundException;
@@ -17,7 +18,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 
 public class homeController extends generalController implements Initializable {
-
+    protected final String DICT_PATH = "src/resource/dict.json";
     @FXML
     TextField nameField = new TextField();
 
@@ -60,6 +61,7 @@ public class homeController extends generalController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        TransferedData.dict.loadJson(DICT_PATH);
         try {
             loadName();
         } catch (IOException | ParseException e) {

@@ -1,6 +1,5 @@
 package com.harafx.Models;
 
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -28,7 +27,6 @@ public class Json {
             obj = new JSONParser().parse(new FileReader(path));
             return (JSONArray) obj;
         } catch (IOException | ParseException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
         return null;

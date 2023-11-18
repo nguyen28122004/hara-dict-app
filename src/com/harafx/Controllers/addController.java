@@ -1,13 +1,8 @@
 package com.harafx.Controllers;
 
-import com.harafx.Models.Json;
-
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-
-import org.json.simple.JSONObject;
-import org.json.simple.parser.ParseException;
 
 import com.harafx.Models.TransferedData;
 import com.harafx.Models.Word;
@@ -54,15 +49,10 @@ public class addController extends wordFormController implements Initializable {
         try {
             TransferedData.dict.saveJson(DICT_PATH);
         } catch (IOException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
 
-        try {
-            TransferedData.dict.loadJson(DICT_PATH);
-        } catch (IOException | ParseException e) {
-            e.printStackTrace();
-        }
+        TransferedData.dict.loadJson(DICT_PATH);
 
         alert.setAlertType(AlertType.INFORMATION);
         alert.setHeaderText("Your word is added. Please reload the application");

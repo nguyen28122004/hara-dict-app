@@ -4,8 +4,6 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import org.json.simple.parser.ParseException;
-
 import com.harafx.Models.TransferedData;
 import com.harafx.Models.Word;
 
@@ -41,13 +39,9 @@ public class editController extends wordFormController implements Initializable 
             e.printStackTrace();
         }
 
-        try {
-            TransferedData.dict.loadJson(DICT_PATH);
-            TransferedData.dict.size.add(1);
-            TransferedData.dict.size.add(-1);
-        } catch (IOException | ParseException e) {
-            e.printStackTrace();
-        }
+        TransferedData.dict.loadJson(DICT_PATH);
+        TransferedData.dict.size.add(1);
+        TransferedData.dict.size.add(-1);
 
         alert.setAlertType(AlertType.INFORMATION);
         alert.setHeaderText("Your change is apply. Please reload the application");

@@ -1,0 +1,33 @@
+.label {
+    -fx-background-color: #16325c;
+    -fx-font-family: 'Segoe UI';
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-wrap-text: 'true';
+    -fx-text-alignment: center;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+    -fx-padding: 5px;
+}
+
+.label:hover {
+    -fx-scale-x: 1.07;
+    -fx-scale-y: 1.07;
+    -fx-background-color: #2d5ea7;
+}
+
+.text-area {
+    -fx-background-insets: 0;
+    -fx-background-color: transparent;
+    -fx-text-fill: #16325c;
+}
+
+.text-area .content {
+    -fx-background-color: transparent;
+    -fx-text-alignment: center;
+    -fx-alignment: center;
+}
+
+.text-area:focused .content {
+    -fx-background-color: transparent;
+}

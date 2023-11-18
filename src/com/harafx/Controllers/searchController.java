@@ -7,10 +7,6 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-import javax.xml.crypto.dsig.spec.XPathType.Filter;
-
-import org.json.simple.parser.ParseException;
-
 import com.harafx.Models.Dictionary;
 import com.harafx.Models.TransferedData;
 import com.harafx.Models.User;
@@ -19,7 +15,6 @@ import com.harafx.Models.Word;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -32,7 +27,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
-import javafx.stage.Stage;
 
 public class searchController implements Initializable {
     protected final String MEANING_PATH = "../view/meaning.fxml";
@@ -226,12 +220,8 @@ public class searchController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        try {
-            dict.loadJson(DICT_PATH);
-            TransferedData.dict = dict;
-        } catch (IOException | ParseException e) {
-            e.printStackTrace();
-        }
+        dict.loadJson(DICT_PATH);
+        TransferedData.dict = dict;
 
         initButtonControl();
         setListView(dict.getTargetList());

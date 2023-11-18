@@ -5,8 +5,6 @@ import java.util.ArrayList;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
-import javafx.scene.layout.AnchorPane;
-
 public class Word {
     private String target = new String();
     private Pronunciation ipa = new Pronunciation();

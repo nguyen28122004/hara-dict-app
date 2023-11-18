@@ -18,10 +18,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.Alert.AlertType;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
-
-import com.harafx.Models.TranslateAPI;
 
 public class translatorController implements Initializable {
 

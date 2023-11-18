@@ -1,7 +1,5 @@
 package com.harafx.Models;
 
-import java.lang.*;
-
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 

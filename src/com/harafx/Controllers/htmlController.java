@@ -8,6 +8,7 @@ public class htmlController {
     String htmlString = new String();
 
     public void loadHTMLString(String path) {
+        htmlString = "";
         try (FileReader file = new FileReader(new File(path))) {
 
             int i;

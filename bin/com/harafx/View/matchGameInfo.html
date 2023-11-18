@@ -1,0 +1,83 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+    * {
+        font-family: 'Segoe UI', sans-serif;
+        color: #16325c;
+        font-size: 18px;
+    }
+    
+    .title {
+        font-size: 40px;
+        text-align: center;
+        font-weight: bold;
+    }
+    
+    .content {
+        width: 95%;
+        text-align: justify;
+        line-height: 1.4;
+    }
+    
+    #categories {
+        display: flex;
+        flex-direction: row;
+        column-gap: 30px;
+    }
+    
+    .column {
+        display: flex;
+        row-gap: 10px;
+        width: 50%;
+        flex-direction: column;
+    }
+    
+    .category {
+        width: 100%;
+    }
+    
+    input {
+        display: none;
+    }
+    
+    label {
+        display: inline-block;
+        /* width: 80%; */
+        background-color: #16325c;
+        border-radius: 10px;
+        padding: 10px;
+        cursor: pointer;
+        font-weight: bold;
+        color: #fff;
+    }
+    
+    input:checked+label {
+        background-color: rgb(157, 0, 0);
+    }
+    
+     ::-webkit-scrollbar {
+        width: 7px;
+    }
+    
+     ::-webkit-scrollbar-track {
+        background-color: transparent;
+    }
+    
+     ::-webkit-scrollbar-thumb {
+        border-radius: 6px;
+        background: #16325c;
+    }
+</style>
+
+<body>
+    <p class="title">MATCH MEMOR</p>
+    <p class="content"></p>
+</body>
+
+</html>

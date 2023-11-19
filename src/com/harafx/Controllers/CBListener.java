@@ -9,6 +9,7 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Cursor;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.chart.PieChart.Data;
@@ -21,6 +22,7 @@ import javafx.scene.input.Clipboard;
 import javafx.scene.input.DataFormat;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
@@ -43,10 +45,24 @@ public class CBListener implements Runnable {
                 "   -fx-border-color: white;" + //
                 "    -fx-border-width: 2px;" + //
                 "    -fx-border-radius: 10px;");
-        VBox vBox = new VBox(button);
-        vBox.setStyle("-fx-background-color: transparent");
+        button.setFocusTraversable(true);
+        button.setCursor(Cursor.HAND);
+        HBox hBox = new HBox(button);
+        Button closeButton = new Button("X");
+        closeButton.setMaxWidth(15);
+        closeButton.setCursor(Cursor.HAND);
+        closeButton.setOnAction(event -> {
+            popup.close();
+        });
+        closeButton.setTextFill(Color.WHITE);
+        closeButton.setStyle("-fx-background-color:#16325c; -fx-background-radius:10;   " + //
+                "   -fx-border-color: white;" + //
+                "    -fx-border-width: 2px;" + //
+                "    -fx-border-radius: 10px;");
+        hBox.getChildren().add(closeButton);
+        hBox.setStyle("-fx-background-color: transparent; -fx-border-radius: 10px;-fx-background-radius:10;");
 
-        popup.setScene(new Scene(vBox));
+        popup.setScene(new Scene(hBox, Color.TRANSPARENT));
         popup.setAlwaysOnTop(true);
         popup.setX(robot.getMouseX() + 10);
         popup.setY(robot.getMouseY() + 10);
@@ -59,6 +75,11 @@ public class CBListener implements Runnable {
             }
         });
         popup.show();
+        popup.setIconified(false);
+        popup.toFront();
+
+        popup.requestFocus();
+        button.requestFocus();
         return button;
     }
 
@@ -85,13 +106,35 @@ public class CBListener implements Runnable {
         scrollPane.setStyle(
                 "-fx-background:#cccccc ;-fx-padding:10; -fx-text-fill:#16325c; -fx-font-size:16; -fx-max-height:300");
         popup.setScene(new Scene(scrollPane));
+        scrollPane.setOnMousePressed(press -> {
+            scrollPane.setOnMouseDragged(drag -> {
+                popup.setX(drag.getScreenX() - press.getSceneX());
+                popup.setY(drag.getScreenY() - press.getSceneY());
+            });
+        });
+        text.setOnMousePressed(press -> {
+            text.setOnMouseDragged(drag -> {
+                popup.setX(drag.getScreenX() - press.getSceneX());
+                popup.setY(drag.getScreenY() - press.getSceneY());
+            });
+        });
     }
 
     @Override
     public void run() {
         Clipboard cb = Clipboard.getSystemClipboard();
         Stage popup = new Stage();
-        popup.initStyle(StageStyle.UNDECORATED);
+        Stage wrapStage = new Stage();
+        wrapStage.initStyle(StageStyle.UTILITY);
+        wrapStage.setOpacity(0);
+        wrapStage.setHeight(0);
+        wrapStage.setWidth(0);
+        wrapStage.show();
+        Stage transparentStage = new Stage();
+        transparentStage.initOwner(wrapStage);
+        transparentStage.initStyle(StageStyle.UNDECORATED);
+        popup.initStyle(StageStyle.TRANSPARENT);
+        popup.initOwner(transparentStage);
 
         clipBoardListener(cb, popup);
 

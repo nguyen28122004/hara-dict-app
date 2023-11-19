@@ -20,8 +20,13 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.ButtonBar.ButtonData;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -85,6 +90,14 @@ public class searchController implements Initializable {
     }
 
     private void deleteWord() {
+        Alert alert = new Alert(AlertType.CONFIRMATION, "", ButtonType.YES, ButtonType.NO);
+        alert.setHeaderText("Do you want to remove the selected word?");
+        alert.showAndWait();
+
+        if (alert.getResult().getButtonData() == ButtonData.NO) {
+            return;
+        }
+
         TransferedData.dict.removeWord(TransferedData.wordIndex);
         setListView(TransferedData.dict.getTargetList());
 
@@ -93,6 +106,11 @@ public class searchController implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        alert.setAlertType(AlertType.INFORMATION);
+        alert.setHeaderText("Your word is removed");
+        alert.show();
+        TransferedData.dict.loadJson(DICT_PATH);
+        rightPane.getChildren().clear();
     }
 
     private void setFavImage(String path) {

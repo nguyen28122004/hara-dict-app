@@ -28,7 +28,7 @@ public class addController extends wordFormController implements Initializable {
 
         Word word = getDefElement();
 
-        if (word.getTarget() == "" || word.getTarget() == null) {
+        if (word.getTarget().isEmpty()) {
             alert.setAlertType(AlertType.INFORMATION);
             alert.setHeaderText("Please fill all the field before adding");
             alert.show();

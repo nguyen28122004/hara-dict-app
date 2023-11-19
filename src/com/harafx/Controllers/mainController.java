@@ -4,19 +4,32 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import java.awt.SystemTray;
+
+import com.dustinredmond.fxtrayicon.FXTrayIcon;
 import com.harafx.Models.Stopwatch;
 import com.harafx.Models.TransferedData;
 
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.ButtonBar.ButtonData;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import javafx.stage.Window;
 
 public class mainController extends generalController implements Initializable {
+
+    FXTrayIcon trayIcon;
+
     @FXML
     AnchorPane titleBar = new AnchorPane();
     @FXML
@@ -56,6 +69,22 @@ public class mainController extends generalController implements Initializable {
     }
 
     void quit() {
+        Stage curStage = (Stage) quitButton.getScene().getWindow();
+
+        ButtonType hide = new ButtonType("Hide to tray", ButtonData.OTHER);
+        Alert alert = new Alert(AlertType.CONFIRMATION, "", ButtonType.YES, ButtonType.NO, hide);
+        alert.setHeaderText("Do you want to close the application?");
+        alert.showAndWait();
+
+        if (alert.getResult().getButtonData() == ButtonData.NO) {
+            return;
+        }
+        if (alert.getResult().getButtonData() == ButtonData.OTHER) {
+            curStage.hide();
+            hideToTray();
+            return;
+        }
+
         Platform.exit();
         for (Stopwatch thread : TransferedData.threads) {
             System.out.println(thread.getName());
@@ -66,6 +95,17 @@ public class mainController extends generalController implements Initializable {
     void minimize() {
         Stage curStage = (Stage) quitButton.getScene().getWindow();
         curStage.setIconified(true);
+    }
+
+    void hideToTray() {
+        Stage curStage = (Stage) quitButton.getScene().getWindow();
+        if (trayIcon == null) {
+            trayIcon = new FXTrayIcon(curStage, new Image("resource/icon.jpg"));
+        }
+        if (trayIcon.isShowing()) {
+            return;
+        }
+        trayIcon.show();
     }
 
     void initButtonControl() throws IOException {

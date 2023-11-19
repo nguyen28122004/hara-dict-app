@@ -3,17 +3,22 @@ package com.harafx;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import com.harafx.Controllers.CBListener;
+
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 public class Main extends Application implements Initializable {
 
     public static void main(String[] args) throws Exception {
+        Platform.runLater(new CBListener());
         launch(args);
     }
 
@@ -24,7 +29,9 @@ public class Main extends Application implements Initializable {
         homeStage.setTitle("English App");
         homeStage.setScene(new Scene(root));
         homeStage.initStyle(StageStyle.UNDECORATED);
+        homeStage.getIcons().add(new Image("resource/icon.jpg"));
         homeStage.show();
+
     }
 
     @Override

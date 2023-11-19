@@ -13,9 +13,11 @@ import org.json.simple.parser.ParseException;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 public class homeController extends generalController implements Initializable {
     protected final String DICT_PATH = "src/resource/dict.json";

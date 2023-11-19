@@ -74,13 +74,20 @@ public class translatorController implements Initializable {
 
     void addTranslateListener() {
         translateButton.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
-            try {
-                String res = new String();
-                res = getTranslateRes();
-                resultArea.setText(res);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            new Thread(new Runnable() {
+
+                @Override
+                public void run() {
+                    String res = new String();
+                    try {
+                        res = getTranslateRes();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    resultArea.setText(res);
+                }
+
+            }).start();
         });
 
     }

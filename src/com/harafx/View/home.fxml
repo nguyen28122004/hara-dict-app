@@ -1,15 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import java.lang.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.effect.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.paint.*?>
-<?import javafx.scene.shape.*?>
-<?import javafx.scene.text.*?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
@@ -20,17 +10,15 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.paint.LinearGradient?>
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="contentPane" prefHeight="538.0" prefWidth="1090.0" stylesheets="style/home.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.harafx.Controllers.homeController">
+<AnchorPane fx:id="contentPane" prefHeight="538.0" prefWidth="1090.0" stylesheets="style/home.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.harafx.Controllers.homeController">
    <children>
       <TextField id="name-field" fx:id="nameField" focusTraversable="false" layoutX="156.0" layoutY="5.0" onKeyReleased="#saveName" prefHeight="61.0" prefWidth="493.0" promptText="YOUR NAME">
          <font>
@@ -213,7 +201,38 @@
             </AnchorPane>
          </children>
       </GridPane>
-      <VBox id="random-word" layoutX="29.0" layoutY="80.0" prefHeight="394.0" prefWidth="266.0" />
+      <VBox id="random-word" layoutX="29.0" layoutY="80.0" prefHeight="394.0" prefWidth="266.0">
+         <children>
+            <Label text="Something fun here!!!" textFill="#16325c">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font></Label>
+            <AnchorPane prefHeight="21.0" prefWidth="266.0" />
+            <Text fill="#16325c" strokeType="OUTSIDE" strokeWidth="0.0" text="Click the X button on the top left, then choose &quot;Hide to tray&quot;, you will see the win dow disappear." wrappingWidth="263.10845947265625">
+               <font>
+                  <Font size="17.0" />
+               </font></Text>
+            <Text fill="#16325c" layoutX="10.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="After that, try selecting some English text from anywhere, copy them by pressing Ctrl + C or the Copy button in the right click context menu" wrappingWidth="263.10845947265625">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Text>
+            <Text fill="#16325c" layoutX="10.0" layoutY="107.0" strokeType="OUTSIDE" strokeWidth="0.0" text="A translate button will appear..." wrappingWidth="263.10845947265625">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Text>
+            <Text fill="#16325c" layoutX="10.0" layoutY="158.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Let's click the button...." wrappingWidth="263.10845947265625">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Text>
+            <Text fill="#16325c" layoutX="10.0" layoutY="287.0" strokeType="OUTSIDE" strokeWidth="0.0" text="And give us the A score!!!!" wrappingWidth="263.10845947265625">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Text>
+         </children></VBox>
       <ImageView fitHeight="130.0" fitWidth="129.0" layoutX="876.0" layoutY="-50.0" opacity="0.14">
          <image>
             <Image url="@../../../resource/robot-with-book.png" />

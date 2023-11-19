@@ -26,5 +26,4 @@ public class TranslateAPI {
         in.close();
         return response.toString();
     }
-
 }

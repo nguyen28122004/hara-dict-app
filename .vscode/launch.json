@@ -5,7 +5,7 @@
             "name": "EnglishDictApp",
             "request": "launch",
             "mainClass": "com.harafx.Main",
-            "vmArgs": "--module-path lib/javafx-sdk-21/lib --add-modules javafx.controls,javafx.fxml,javafx.web,javafx.graphics",
+            "vmArgs": "--module-path lib/javafx-sdk-21/lib --add-modules javafx.controls,javafx.fxml,javafx.web,javafx.graphics --add-exports javafx.graphics/com.sun.glass.ui=ALL-UNNAMED",
         }
     ]
 }

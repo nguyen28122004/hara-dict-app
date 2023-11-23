@@ -9,12 +9,12 @@ import javafx.scene.layout.AnchorPane;
 
 public class generalController {
 
-    final String HOME_VIEW_PATH = "../view/home.fxml";
-    final String SEARCH_VIEW_PATH = "../view/search.fxml";
-    final String GGTRANS_VIEW_PATH = "../view/ggtranslate.fxml";
-    final String TIMING_VIEW_PATH = "../view/timing.fxml";
-    final String FAV_VIEW_PATH = "../view/fav.fxml";
-    final String GAME_MENU_VIEW_PATH = "../view/game-menu.fxml";
+    final String HOME_VIEW_PATH = "com/harafx/View/home.fxml";
+    final String SEARCH_VIEW_PATH = "com/harafx/View/search.fxml";
+    final String GGTRANS_VIEW_PATH = "com/harafx/View/ggtranslate.fxml";
+    final String TIMING_VIEW_PATH = "com/harafx/View/timing.fxml";
+    final String FAV_VIEW_PATH = "com/harafx/View/fav.fxml";
+    final String GAME_MENU_VIEW_PATH = "com/harafx/View/game-menu.fxml";
 
     @FXML
     AnchorPane contentPane = new AnchorPane();
@@ -26,7 +26,7 @@ public class generalController {
     void showHomePane() {
         Node homeNode;
         try {
-            homeNode = (Node) FXMLLoader.load(getClass().getResource(HOME_VIEW_PATH));
+            homeNode = (Node) FXMLLoader.load(getClass().getClassLoader().getResource(HOME_VIEW_PATH));
             setNewScene(homeNode);
         } catch (IOException e) {
             e.printStackTrace();
@@ -36,7 +36,7 @@ public class generalController {
     void showSearchPane() {
         Node searchNode;
         try {
-            searchNode = (Node) FXMLLoader.load(getClass().getResource(SEARCH_VIEW_PATH));
+            searchNode = (Node) FXMLLoader.load(getClass().getClassLoader().getResource(SEARCH_VIEW_PATH));
             setNewScene(searchNode);
         } catch (IOException e) {
             e.printStackTrace();
@@ -46,7 +46,7 @@ public class generalController {
     void showGgTranslatePane() {
         Node searchNode;
         try {
-            searchNode = (Node) FXMLLoader.load(getClass().getResource(GGTRANS_VIEW_PATH));
+            searchNode = (Node) FXMLLoader.load(getClass().getClassLoader().getResource(GGTRANS_VIEW_PATH));
             setNewScene(searchNode);
         } catch (IOException e) {
             e.printStackTrace();
@@ -56,7 +56,7 @@ public class generalController {
     void showTimingPane() {
         Node searchNode;
         try {
-            searchNode = (Node) FXMLLoader.load(getClass().getResource(TIMING_VIEW_PATH));
+            searchNode = (Node) FXMLLoader.load(getClass().getClassLoader().getResource(TIMING_VIEW_PATH));
             setNewScene(searchNode);
         } catch (IOException e) {
             e.printStackTrace();
@@ -66,7 +66,7 @@ public class generalController {
     void showFavPane() {
         Node searchNode;
         try {
-            searchNode = (Node) FXMLLoader.load(getClass().getResource(FAV_VIEW_PATH));
+            searchNode = (Node) FXMLLoader.load(getClass().getClassLoader().getResource(FAV_VIEW_PATH));
             setNewScene(searchNode);
         } catch (IOException e) {
             e.printStackTrace();
@@ -76,7 +76,7 @@ public class generalController {
     void showGamePane() {
         Node searchNode;
         try {
-            searchNode = (Node) FXMLLoader.load(getClass().getResource(GAME_MENU_VIEW_PATH));
+            searchNode = (Node) FXMLLoader.load(getClass().getClassLoader().getResource(GAME_MENU_VIEW_PATH));
             setNewScene(searchNode);
         } catch (IOException e) {
             e.printStackTrace();

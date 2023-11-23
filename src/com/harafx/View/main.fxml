@@ -98,15 +98,6 @@
                               </ImageView>
                            </children>
                         </StackPane>
-                        <StackPane fx:id="settingButton" layoutX="10.0" layoutY="316.0" prefHeight="39.0" prefWidth="39.0" styleClass="function-button">
-                           <children>
-                              <ImageView fitHeight="29.0" fitWidth="29.0">
-                                 <image>
-                                    <Image url="@../../../resource/icon50/icons8-advanced-search-50.png" />
-                                 </image>
-                              </ImageView>
-                           </children>
-                        </StackPane>
                      </children>
                   </VBox>
                </children>

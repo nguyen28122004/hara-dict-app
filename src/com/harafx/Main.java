@@ -25,7 +25,7 @@ public class Main extends Application implements Initializable {
     @Override
     public void start(Stage arg0) throws Exception {
         Stage homeStage = new Stage();
-        Parent root = FXMLLoader.load(getClass().getResource("View/main.fxml"));
+        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("com/harafx/View/main.fxml"));
         homeStage.setTitle("English App");
         homeStage.setScene(new Scene(root));
         homeStage.initStyle(StageStyle.UNDECORATED);

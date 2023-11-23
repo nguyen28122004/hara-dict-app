@@ -31,7 +31,7 @@ import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 
 public class quizController implements Initializable {
-    final String AVATAR_PATH = "resource\\unnamed.jpg";
+    final String AVATAR_PATH = "resource/unnamed.jpg";
 
     ArrayList<Quiz> quizs = new ArrayList<>();
     Quiz quiz = new Quiz();
@@ -165,7 +165,7 @@ public class quizController implements Initializable {
         alert.setHeaderText("Explanation:");
         alert.setContentText(quiz.getSolution());
         alert.getDialogPane().getStylesheets()
-                .add(getClass().getResource("../../../style/dialog.css").toExternalForm());
+                .add(getClass().getClassLoader().getResource("style/dialog.css").toExternalForm());
         alert.getDialogPane().getStyleClass().add("myDialog");
         alert.show();
     }

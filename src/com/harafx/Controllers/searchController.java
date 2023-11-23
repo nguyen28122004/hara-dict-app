@@ -34,9 +34,9 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 
 public class searchController implements Initializable {
-    protected final String MEANING_PATH = "../view/meaning.fxml";
-    protected final String ADD_PATH = "../view/add.fxml";
-    protected final String EDIT_PATH = "../view/edit.fxml";
+    protected final String MEANING_PATH = "com/harafx/View/meaning.fxml";
+    protected final String ADD_PATH = "com/harafx/View/add.fxml";
+    protected final String EDIT_PATH = "com/harafx/View/edit.fxml";
     protected final String DICT_PATH = "src/resource/dict.json";
     protected final String FAV_IMG_FILLED = "src/resource/dark blue icon/heart-filled.png";
     protected final String FAV_IMG_OUTLINE = "src/resource/dark blue icon/heart-outline.png";
@@ -65,7 +65,7 @@ public class searchController implements Initializable {
     ImageView favImg = new ImageView();
 
     void showMeaningPane() throws IOException {
-        Node node = (Node) FXMLLoader.load(getClass().getResource(MEANING_PATH));
+        Node node = (Node) FXMLLoader.load(getClass().getClassLoader().getResource(MEANING_PATH));
         rightPane.getChildren().setAll(node);
     }
 
@@ -74,7 +74,7 @@ public class searchController implements Initializable {
         TransferedData.word = new Word();
         targetListView.getSelectionModel().clearSelection();
 
-        Node node = (Node) FXMLLoader.load(getClass().getResource(ADD_PATH));
+        Node node = (Node) FXMLLoader.load(getClass().getClassLoader().getResource(ADD_PATH));
         rightPane.getChildren().setAll(node);
     }
 
@@ -85,7 +85,7 @@ public class searchController implements Initializable {
         TransferedData.wordIndex = index;
         TransferedData.word = new Word(dict.getWords().get(index));
 
-        Node node = (Node) FXMLLoader.load(getClass().getResource(EDIT_PATH));
+        Node node = (Node) FXMLLoader.load(getClass().getClassLoader().getResource(EDIT_PATH));
         rightPane.getChildren().setAll(node);
     }
 
@@ -221,7 +221,7 @@ public class searchController implements Initializable {
     }
 
     public void switchRightPane(String path) throws IOException {
-        Node node = (Node) FXMLLoader.load(getClass().getResource(path));
+        Node node = (Node) FXMLLoader.load(getClass().getClassLoader().getResource(path));
         rightPane.getChildren().setAll(node);
     }
 

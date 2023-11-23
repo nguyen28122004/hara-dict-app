@@ -19,9 +19,9 @@ import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 
 public class menuGameController extends htmlController implements Initializable {
-    final String FILL = "../view/quiz.fxml";
-    final String QUIZ = "../view/quiz.fxml";
-    final String MATCH = "../view/match.fxml";
+    final String FILL = "com/harafx/View/quiz.fxml";
+    final String QUIZ = "com/harafx/View/quiz.fxml";
+    final String MATCH = "com/harafx/View/match.fxml";
 
     ArrayList<String> gamePath = new ArrayList<>();
     int currentGameSelect = -1;
@@ -45,7 +45,7 @@ public class menuGameController extends htmlController implements Initializable 
     void switchView(String path) {
         Node node;
         try {
-            node = FXMLLoader.load(getClass().getResource(path));
+            node = FXMLLoader.load(getClass().getClassLoader().getResource(path));
             wrapPane.getChildren().setAll(node);
         } catch (IOException e) {
             e.printStackTrace();

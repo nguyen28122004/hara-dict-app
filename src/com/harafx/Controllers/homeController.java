@@ -57,7 +57,7 @@ public class homeController extends generalController implements Initializable {
             showGamePane();
         });
         GridBox4.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
-            showGamePane();
+            showFavPane();
         });
     }
 

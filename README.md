@@ -10,7 +10,8 @@ This is an open source Dictionary App
 - Truy cập [link này](https://github.com/nguyen28122004/hara-dict-app/releases/tag/installer) và tải về máy file cài đặt `English-Dictionary-Installer.exe`
 - Chạy file vừa tải về, tiến hành cài đặt
 - Mở Start, tìm kiếm "English Dictionary App" để khởi động chương trình
-####Cách 2: Chạy chương trình bằng mã nguồn / file jar
+
+#### Cách 2: Chạy chương trình bằng mã nguồn / file jar
 - Clone repo từ nhánh master về thư mục trên máy bạn
     ```
     git clone https://github.com/nguyen28122004/hara-dict-app.git

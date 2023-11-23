@@ -3,3 +3,4 @@ EnglishDictApp.jar
 *.log
 **/bin/
 build-jar/
+.gitignore

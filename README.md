@@ -16,8 +16,8 @@ This is an open source Dictionary App
     git clone https://github.com/nguyen28122004/hara-dict-app.git
     ```
 - Mở thư mục chứa mã nguồn vừa clone về
-    **Bằng mã nguồn**: Mở dưới dạng Java Project với VS Code và chạy.
-    **Bằng file jar**: Mở `cmd` từ thư mục chứa mã nguồn và thực hiện lệnh sau:
+**Bằng mã nguồn**: Mở dưới dạng Java Project với VS Code và chạy.
+**Bằng file jar**: Mở `cmd` từ thư mục chứa mã nguồn và thực hiện lệnh sau:
     ```
     java --enable-preview -jar --module-path lib/javafx-sdk-21/lib --add-modules javafx.controls,javafx.fxml,javafx.web,javafx.graphics --add-exports javafx.graphics/com.sun.glass.ui=ALL-UNNAMED hara-dict-app.jar
     ```

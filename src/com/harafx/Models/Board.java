@@ -55,16 +55,25 @@ public class Board {
     // ==============================
     public boolean matchResult(String str1, String str2) {
         int index = -1;
-        for (Cell cell : cells) {
-            if (cell.getValue().equals(str1)) {
-                index = cells.indexOf(cell);
-                MatchPair tmpPair = pairs.get((int) Math.ceil(index / 2));
-                if (tmpPair.getTarget().getValue().equals(str1) &&
-                        tmpPair.getMeaning().getValue().equals(str2))
-                    return true;
-                if (tmpPair.getTarget().getValue().equals(str2) &&
-                        tmpPair.getMeaning().getValue().equals(str1))
-                    return true;
+        // for (Cell cell : cells) {
+        // if (cell.getValue().equals(str1)) {
+        // index = cells.indexOf(cell); // Timf index của str1
+        // MatchPair tmpPair = pairs.get((int) Math.ceil(index / 2)); // index / 2 ==
+        // 2.5 -> 3
+        // if (tmpPair.getTarget().getValue().equals(str1) &&
+        // tmpPair.getMeaning().getValue().equals(str2))
+        // return true;
+        // if (tmpPair.getTarget().getValue().equals(str2) &&
+        // tmpPair.getMeaning().getValue().equals(str1))
+        // return true;
+        // }
+        // }
+        for (int i = 0; i < cells.size() - 1; i = i + 2) {
+            if (cells.get(i).getValue() == str1 && cells.get(i + 1).getValue() == str2) {
+                return true;
+            }
+            if (cells.get(i).getValue() == str2 && cells.get(i + 1).getValue() == str1) {
+                return true;
             }
         }
         return false;
@@ -84,8 +93,10 @@ public class Board {
         for (int i = 0; i < row * col / 2; i++) {
             randWord(dict, rand);
             MatchPair matchPair = new MatchPair();
-            matchPair.randMatchPair(word, row, col);
-
+            matchPair.randMatchPair(word, row, col); // (1,1) (2,3)
+            // MatchPair 1 : (1,1) , (2,3) -- 1,2
+            // MatchPair 2: (2,4) , (2,2) -- 3,4
+            // MatchPair 3: (4,2), (3,1) -- 5,6
             pairs.add(matchPair);
             cells.add(matchPair.getTarget());
             cells.add(matchPair.getMeaning());

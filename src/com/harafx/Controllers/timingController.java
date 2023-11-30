@@ -18,7 +18,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 
 public class timingController implements Initializable {
-    Stopwatch timer = new Stopwatch(0, 0, 0);
+    Stopwatch timer;
 
     @FXML
     TextField timerLabel = new TextField();
@@ -77,7 +77,6 @@ public class timingController implements Initializable {
                 }
             }
         });
-
     }
 
     void initButonControl() {
@@ -113,8 +112,9 @@ public class timingController implements Initializable {
         timer = new Stopwatch(timer);
         timerLabel.setEditable(false);
         addListener();
-        timer.start();
+        timer.setName("Countdown");
         TransferedData.threads.add(timer);
+        timer.start();
     }
 
     private void pauseTimer() {
@@ -124,9 +124,23 @@ public class timingController implements Initializable {
         timer.stopTimer();
     }
 
+    private void setTimer() {
+        for (Stopwatch thread : TransferedData.threads) {
+            if (thread.getName().equals("Countdown")) {
+                timer = thread;
+                setTimerLabel();
+                startTimer();
+                return;
+            }
+        }
+        timer = new Stopwatch(0, 0, 0);
+    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         initButonControl();
+        setTimer();
+
     }
 
 }

@@ -10,7 +10,7 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
 public class Json {
-    static public JSONObject loadObjectFromFile(String path) {
+    static public JSONObject loadObjectFromFile(String path) { // JSON String -> JSON OBject
         Object obj;
         try {
             obj = new JSONParser().parse(new FileReader(path));

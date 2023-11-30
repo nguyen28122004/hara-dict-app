@@ -40,8 +40,6 @@ public class editController extends wordFormController implements Initializable 
         }
 
         TransferedData.dict.loadJson(DICT_PATH);
-        TransferedData.dict.size.add(1);
-        TransferedData.dict.size.add(-1);
 
         alert.setAlertType(AlertType.INFORMATION);
         alert.setHeaderText("Your change is apply. Please reload the application");

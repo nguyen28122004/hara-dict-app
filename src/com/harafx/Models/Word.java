@@ -95,7 +95,7 @@ public class Word {
         this.defs.add(def);
     }
 
-    public void convertFromJson(JSONObject jo) {
+    public void convertFromJson(JSONObject jo) { // Convert JSONObject to Object (Word) in Java
         target = (String) jo.get("target");
         ipa.convertFromJson((JSONObject) jo.get("ipa"));
 
